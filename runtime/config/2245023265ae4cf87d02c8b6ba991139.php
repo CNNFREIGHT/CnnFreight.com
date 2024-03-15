@@ -52,7 +52,7 @@ return array (
   'url_rule_sort_suffix' => '0',
   'message_rqlogin' => '0',
   'spiderlog' => '1',
-  'licensecode' => 'QjBEOTAxNkQ3OSw4RDIxNEFCQzIxLDEzRTcwRTdBRjIsMzY1MjhGOTlFMSwyMUZGQkNGODJCLw==0',
+  'licensecode' => 'QzRENjcyRjlBNywxQzgyNzhFMDRGLEUyNTQwNzUyQUQv4',
   'index_title' => '{pboot:sitetitle}-{pboot:sitesubtitle}',
   'about_title' => '{sort:title}-{pboot:sitesubtitle}',
   'list_title' => '{sort:title}-{pboot:sitesubtitle}',
