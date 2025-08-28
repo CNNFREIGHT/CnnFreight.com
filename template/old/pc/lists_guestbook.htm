@@ -1,0 +1,238 @@
+{eyou:include file="comm/head.htm" /}
+
+{eyou:include file="comm/top.htm" /}
+
+
+
+<div class="all">
+
+  <div class="about_cont clearboth">
+
+      <div class="Left">
+
+          {eyou:include file="comm/sortnav.htm" /}
+
+      </div>
+
+      <div class="right_cont message">
+
+          {eyou:include file="comm/position.htm" /}
+
+          <div class="messageBox clearboth">
+
+            <div>
+
+              <img src="/template/old/images/contact/icon.jpg">
+
+              <span>
+                {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+                如果您有任何问题要咨询我们，欢迎您随时给我们留言， 我们将及时回复您！
+                {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+                If you have any questions, please leave us a message at any time and we will reply to you in time!
+                {/eyou:if}
+              </span>
+
+            </div>
+
+            <img src="/template/old/images/contact/people.jpg">
+
+          </div>
+
+          <div class="p1">
+
+          <!-- 留言表单 -->
+
+            <div class="row">
+
+              <div class="col-lg-3"></div>
+
+              <div class="col-12 col-lg-6">
+
+               {eyou:guestbookform type='default'}
+
+                  <form method="POST" action="{$field.action}"  {$field.formhidden} onsubmit="{$field.submit}" class="my-4" onsubmit="return submsg(this);">
+
+                        <div class="form-group">
+
+                            <!-- <label for="contacts">联系人</label> -->
+
+                            <li>
+
+                                <input type="text" name="{$field.attr_30}" required id="contacts" class="form-control" placeholder="{$field.itemname_30}">
+
+                            </div>
+
+                          </li>
+
+                        
+
+                        <div class="form-group">
+
+                            <!-- <label for="mobile">手　机</label> -->
+
+                            <li>
+
+                                <input type="text" name="{$field.attr_31}" required id="mobile" class="form-control" placeholder="{$field.itemname_31}">
+
+                            </li>
+
+                        </div>
+
+                        
+
+                        <div class="form-group">
+
+                            <!-- <label for="content" >内　容</label> -->
+
+                            <li>
+
+                                <textarea  cols="20" rows="2" name="{$field.attr_32}" id="content" class="form-control" placeholder="{$field.itemname_32}"></textarea>
+
+                            </li>
+
+                        </div>
+
+                        <!-- <div class="form-group">
+
+                            <label for="checkcode">验证码</label>
+
+                            <div class="row">
+
+                                <div class="col-6">
+
+                                    <input type="text" name="checkcode" required id="checkcode" class="form-control" placeholder="请输入验证码">
+
+                                </div>
+
+                                <div class="col-6">
+
+                                    <img title="点击刷新" class="codeimg" style="height:33px;" src="{pboot:checkcode}" onclick="this.src='{pboot:checkcode}?'+Math.round(Math.random()*10);" />
+
+                                </div>
+
+                            </div>
+
+                        </div> -->
+
+                        
+
+                        <div class="form-group">
+
+                          <button type="submit" class="btn btn-info mb-2 submit">提交留言</button>
+
+                        </div>
+
+                        {$field.hidden}
+
+                    </form>
+
+                {/eyou:guestbookform}
+
+                </div>
+
+                <div class="col-lg-3"></div>
+
+            </div> 
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+//ajax提交留言
+
+function submsg(obj){
+
+  var url='{pboot:msgaction}';
+
+  var contacts=$(obj).find("#contacts").val();
+
+  var mobile=$(obj).find("#mobile").val();
+
+  var content=$(obj).find("#content").val();
+
+  var checkcode=$(obj).find("#checkcode").val();
+
+  
+
+  $.ajax({
+
+    type: 'POST',
+
+    url: url,
+
+    dataType: 'json',
+
+    data: {
+
+    	contacts: contacts,
+
+    	mobile: mobile,
+
+    	content: content,
+
+    	checkcode: checkcode
+
+    },
+
+    success: function (response, status) {
+
+      if(response.code){
+
+		 alert("谢谢您的反馈，我们会尽快联系您！");
+
+		 $(obj)[0].reset(); 
+
+      }else{ 
+
+    	 if(response.tourl!=""){
+
+    		 if(confirm(response.data+'是否立即跳转登录？')){
+
+    			 location.href=response.tourl; 
+
+   	   	     }
+
+    	 }
+
+    	 $('.codeimg').click();//更新验证码
+
+      }
+
+    },
+
+    error:function(xhr,status,error){
+
+      alert('返回数据异常！');
+
+    }
+
+  });
+
+  return false;
+
+}
+
+</script>
+
+
+
+{eyou:include file="comm/foot.htm" /}
+

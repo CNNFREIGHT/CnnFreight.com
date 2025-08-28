@@ -1,0 +1,24 @@
+{eyou:include file="comm/head.htm" /}
+{eyou:include file="comm/top.htm" /}
+
+<div class="all">
+    <div class="about_cont clearboth">
+        <div class="Left">
+        {eyou:include file="comm/sortnav.htm" /}
+        </div>
+        <div class="right_cont">
+            {eyou:include file="comm/position.htm" /}
+            <div class="contact">
+                <div class="company_cont">
+                    {$eyou.field.content}
+                </div>
+                  {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+                  {eyou:include file="comm/map.htm" /}
+                  {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+                  <iframe src="https://www.google.com/maps/d/embed?mid=1GAzLPMMNvruXlswWNBxlLxwTpSBKar4&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
+                  {/eyou:if}
+                </div>
+            </div>
+        </div>
+    </div>
+{eyou:include file="comm/foot.htm" /}

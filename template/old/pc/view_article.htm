@@ -1,0 +1,40 @@
+{eyou:include file="comm/head.htm" /}
+{eyou:include file="comm/top.htm" /}
+
+	<div class="all">
+		<div class="news_cont clearboth">
+			<div class="Left">
+				{eyou:include file="comm/sortnav.htm" /}
+			</div>
+	
+			<div class="right_cont">
+				<div class="news clearboth">
+					<h1>{$eyou.field.title}</h1>
+					<div class="subBox clearboth">
+						{eyou:if condition="$Think.cookie.home_lang =='cn'"}
+						<span class="time">发布时间：{$eyou.field.update_time|MyDate='Y-m-d',###}</span>
+						{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+						<span class="time">Release time：{$eyou.field.update_time|MyDate='Y-m-d',###}</span>
+						{/eyou:if}
+						<div class="bdsharebuttonbox newsRight"></div>
+					</div>
+					<p>{$eyou.field.content}</p>
+	
+					<div class="bdsharebuttonbox"></div>
+				</div>
+				<div class="page_box">
+					{eyou:if condition="$Think.cookie.home_lang =='cn'"}
+					{eyou:beafter get='pre'} <a class="font_hei" href="{$field.arcurl}">上一篇 : {$field.title}</a>{eyou:else /}<a class="font_hei">上一篇：没有了</a>{/eyou:beafter}
+					{eyou:beafter get='next'}<a class="font_hei" href="{$field.arcurl}">下一篇 : {$field.title}</a>{eyou:else /}<a class="font_hei">下一篇：没有了</a>{/eyou:beafter}
+					{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+					{eyou:beafter get='pre'} <a class="font_hei" href="{$field.arcurl}">Previous article : {$field.title}</a>{eyou:else /}<a class="font_hei">Previous article：NO</a>{/eyou:beafter}
+					{eyou:beafter get='next'}<a class="font_hei" href="{$field.arcurl}">Next article : {$field.title}</a>{eyou:else /}<a class="font_hei">Next article：NO</a>{/eyou:beafter}
+					{/eyou:if}
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	{eyou:include file="comm/foot.htm" /}

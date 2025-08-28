@@ -1,0 +1,112 @@
+<div class="footer">
+    <div class="footer2 clearboth">
+        <div class="footer_l">
+            <a href="/"><img src="/template/old/images/logo1.png" /></a>
+            <div class="clearboth">
+                <a href="#" class="foot2"></a>
+                <a href="javascript:;" class="wechat"></a>
+                <a href="#" class="email"></a>
+                <a href="{$field.url}/en" class="foot5" target="_blank" alter="ENGLISH|英文版" title="ENGLISH|英文版"><span></span></a>
+            </div>
+        </div>
+        <div class="footer_r" style="height:auto">
+            {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+            <div class="left">
+                <ul class="clearboth">
+                    {eyou:models type="top" loop="8" id="field" currentclass="on"}
+                    <li><a href="{$field.typeurl}">{$field.typename}</a></li>
+                    {/eyou:models} 
+                </ul>
+                <span>{eyou:global name='web_attrname_16' /}{eyou:global name='web_attr_16' /}&nbsp;&nbsp;&nbsp;{eyou:global name='web_attrname_1' /}{eyou:global name='web_attr_1' /}&nbsp;&nbsp;&nbsp;{eyou:global name='web_attrname_21' /}{eyou:global name='web_attr_21' /}</span>
+                <!-- <span>版权所有：{eyou:global name='web_copyright' /}&nbsp;&nbsp;<a href="/">宁波上海货代</a>&nbsp;&nbsp;<a href="/gxfw.html">罐箱服务</a>&nbsp;&nbsp;<a href="/wxpys.html">危险品运输</a>&nbsp;&nbsp;<a target='_blank' href='https://beian.miit.gov.cn'>浙ICP备19045799号</a></span> -->
+            </div>
+            <div class="right"><img src="/template/old/images/code.png"><span>视频号</span></div>
+            {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+            <div class="left">
+                <ul class="clearboth">
+                    {eyou:models type="top" loop="8" id="field" currentclass="on"}
+                    <li><a href="{$field.typeurl}">{$field.englist_name}</a></li>
+                    {/eyou:models} 
+                </ul>
+                <span>{eyou:global name='web_attrname_16' /}{eyou:global name='web_attr_16' /}&nbsp;&nbsp;&nbsp;{eyou:global name='web_attrname_1' /}{eyou:global name='web_attr_1' /}&nbsp;&nbsp;&nbsp;{eyou:global name='web_attrname_21' /}{eyou:global name='web_attr_21' /}</span>
+                <!-- <span>版权所有：{eyou:global name='web_copyright' /}&nbsp;&nbsp;<a href="/">宁波上海货代</a>&nbsp;&nbsp;<a href="/gxfw.html">罐箱服务</a>&nbsp;&nbsp;<a href="/wxpys.html">危险品运输</a>&nbsp;&nbsp;<a target='_blank' href='https://beian.miit.gov.cn'>浙ICP备19045799号</a></span> -->
+            </div>
+            <div class="right"><img src="/template/old/images/YouTube.png"><span>YouTube</span></div>
+            {/eyou:if}
+        </div>
+    </div>
+</div>
+
+<!--返回顶部-->
+<div class="backTop">
+    <img src="/template/old/images/top1.png" />
+</div>
+
+{eyou:static file="/template/old/js/jquery-3.7.0.min.js"/}
+{eyou:static file="/template/old/js/jquery.bxslider.min.js"/}
+{eyou:static file="/template/old/js/smooth.js"/}
+{eyou:static file="/template/old/js/jquery.queryloader2.js"/}
+{eyou:static file="/template/old/js/jquery.SuperSlide.2.1.1.js"/}
+
+<script>
+    $(function () {
+        
+        var slider = $('.banner .bxslider').bxSlider({
+            mode: 'fade',
+            auto: 'true',
+            controls: false
+        });
+        $(".content .bx-wrapper .bx-pager").click(function () {
+            slider.startAuto();
+        });
+        var bxW = $(".companyBox").outerWidth() / 4;
+        if ($(window).width() > 510) {
+            $('.company .bxslider').bxSlider({
+                controls: false,
+                minSlides: 1,
+                maxSlides: 4,
+                moveSlides: 1,
+                infiniteLoop: false,
+                slideWidth: bxW
+            });
+        } else {
+            var bx510 = $(".companyBox").outerWidth() * 0.8 / 2;
+            $('.company .bxslider').bxSlider({
+                pager: false,
+                minSlides: 1,
+                maxSlides: 2,
+                moveSlides: 1,
+                infiniteLoop: false,
+                slideWidth: bx510,
+            });
+            $(".company .bxslider li").each(function () {
+                var obj = $(this).find("a > span");
+                letterLimited(obj, 24);
+            });
+        }
+        $("body").css("background", "#fff");
+    });
+    // function json2str(o) {
+    //     var arr = [];
+    //     var fmt = function (s) {
+    //         if (typeof s == 'object' && s != null) return json2str(s);
+    //         return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s;
+    //     }
+    //     for (var i in o) arr.push("'" + i + "':" + fmt(o[i]));
+    //     return '{' + arr.join(',') + '}';
+    // }
+</script>
+
+{eyou:static file="/template/old/js/fun.js" /}
+<!-- 最新动态 -->
+<script type="text/javascript">
+    jQuery(".main_s_m").slide({
+        titCell: ".hd ul",
+        mainCell: ".bd ul",
+        autoPage: true,
+        effect: "left",
+        autoPlay: true,
+        vis: 4,
+        trigger: "click"
+    });
+</script>

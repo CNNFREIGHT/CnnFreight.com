@@ -1,23 +1,19 @@
 <?php
-/**
- * @copyright (C)2016-2099 Hnaoyun Inc.
- * @author XingMeng
- * @email hnxsh@foxmail.com
- * @date 2016年11月5日
- *  内核启动文件，请使用入口文件对本文件进行引用即可
- */
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liu21st <liu21st@gmail.com>
+// +----------------------------------------------------------------------
 
-// 引入初始化文件
-require dirname(__FILE__) . '/init.php';
+namespace think;
 
-// 入口检测
-defined('IS_INDEX') ?: die('不允许直接访问框架内核启动文件！');
+// ThinkPHP 引导文件
+// 1. 加载基础文件
+require __DIR__ . '/base.php';
 
-// 启动内核
-core\basic\Kernel::run(); 
-
- 
-
-
-
-
+// 2. 执行应用
+App::run()->send();
