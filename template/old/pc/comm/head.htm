@@ -2,9 +2,9 @@
 <html lang="zh">
 <head>
 	<meta charset="utf-8">
-	<title>{eyou:global name='web_title' /}_{eyou:global name='web_name' /}</title>
-	<meta name="description" content="{eyou:global name='web_description' /}" />
-	<meta name="keywords" content="{eyou:global name='web_keywords' /}" />
+	<title>{$eyou.field.seo_title}_{eyou:global name='web_title' /}</title>
+	<meta name="keywords" content="{$eyou.field.seo_keywords}_{eyou:global name='web_keywords' /}" />
+	<meta name="description" content="{$eyou.field.seo_description}_{eyou:global name='web_description' /}" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
 	
 	{eyou:static file="/template/old/css/common.css" /}
