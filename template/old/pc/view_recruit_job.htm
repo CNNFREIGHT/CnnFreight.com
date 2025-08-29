@@ -1,96 +1,96 @@
-{eyou:include file="comm/head.htm" /}
-{eyou:include file="comm/top.htm" /}
-
-<div class="all">
-	
-	<div class="news_cont clearboth">
-		<div class="Left">
-			{eyou:include file="comm/sortnav.htm" /}
-		</div>
-
-		<div class="right_cont">
-			<div class="news clearboth">
-				<h1>{$eyou.field.title}</h1>
-				<div class="subBox clearboth">
-					<span class="time">{$eyou.field.add_time|MyDate='Y-m-d H:i:s',###}</span>
-					<div class="bdsharebuttonbox newsRight"></div>
-				</div>
-				<div class="job">
-							<ul class="clearboth">
-									<li class="clearboth">
-											<img src="/template/old/images/recruit/icon1.jpg" />
-											<div>
-													<span>
-															<em>招聘职位</em>
-															<span>
-																{$eyou.field.title}
-															</span>
-													</span>
-											</div>
-									</li>
-									<li class="clearboth">
-											<img src="/template/old/images/recruit/icon2.jpg" />
-											<div>
-													<span>
-															<em>人数</em>
-															<span>
-																{$eyou.field.zprs}
-															</span>
-													</span>
-											</div>
-									</li>
-									<li class="clearboth">
-											<img src="/template/old/images/recruit/icon3.jpg" />
-											<div>
-													<span>
-															<em>地点</em>
-															<span>
-																{$eyou.field.gzdd}
-															</span>
-													</span>
-											</div>
-									</li>
-									<li class="clearboth">
-											<img src="/template/old/images/recruit/icon4.jpg" />
-											<div>
-													<span>
-															<em>薪资待遇</em>
-															<span>
-																{$eyou.field.xzdy}
-															</span>
-													</span>
-											</div>
-									</li>
-							</ul>
-							<div class="jobDetail">
-									<p>
-										{$eyou.field.content}
-									</p>
-									<p></p>
-							</div>
-							<div class="jobBtn">
-									<a href="javascript:history.back(-1)">返回</a>
-							</div>
-			</div>
-
-				<div class="bdsharebuttonbox"></div>
-			</div>
-			<div class="page_box">
-				{eyou:beafter get='pre'}
-				<a class=font_hei href="{$field.arcurl}">{$field.title}</a>
-				{eyou:else /}
-				<a class=font_hei>上一篇：没有了</a>
-				{/eyou:beafter}
-				{eyou:beafter get='next'}
-				<a href="{content:nextlink}" class="back">{$field.title}</a>
-				{eyou:else /}
-				<a class="back">下一篇：没有了</a>
-				{/eyou:beafter}
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-{eyou:include file="comm/foot.htm" /}
+{eyou:include file="comm/head.htm" /}
+{eyou:include file="comm/top.htm" /}
+
+<div class="all">
+	
+	<div class="news_cont clearboth">
+		<div class="Left">
+			{eyou:include file="comm/sortnav.htm" /}
+		</div>
+
+		<div class="right_cont">
+			<div class="news clearboth">
+				<h1>{$eyou.field.title}</h1>
+				<div class="subBox clearboth">
+					<span class="time">{$eyou.field.add_time|MyDate='Y-m-d H:i:s',###}</span>
+					<div class="bdsharebuttonbox newsRight"></div>
+				</div>
+				<div class="job">
+							<ul class="clearboth">
+									<li class="clearboth">
+											<img src="/template/old/images/recruit/icon1.jpg" />
+											<div>
+													<span>
+															<em>招聘职位</em>
+															<span>
+																{$eyou.field.title}
+															</span>
+													</span>
+											</div>
+									</li>
+									<li class="clearboth">
+											<img src="/template/old/images/recruit/icon2.jpg" />
+											<div>
+													<span>
+															<em>人数</em>
+															<span>
+																{$eyou.field.zprs}
+															</span>
+													</span>
+											</div>
+									</li>
+									<li class="clearboth">
+											<img src="/template/old/images/recruit/icon3.jpg" />
+											<div>
+													<span>
+															<em>地点</em>
+															<span>
+																{$eyou.field.gzdd}
+															</span>
+													</span>
+											</div>
+									</li>
+									<li class="clearboth">
+											<img src="/template/old/images/recruit/icon4.jpg" />
+											<div>
+													<span>
+															<em>薪资待遇</em>
+															<span>
+																{$eyou.field.xzdy}
+															</span>
+													</span>
+											</div>
+									</li>
+							</ul>
+							<div class="jobDetail">
+									<p>
+										{$eyou.field.content}
+									</p>
+									<p></p>
+							</div>
+							<div class="jobBtn">
+									<a href="javascript:history.back(-1)">返回</a>
+							</div>
+			</div>
+
+				<div class="bdsharebuttonbox"></div>
+			</div>
+			<div class="page_box">
+				{eyou:beafter get='pre'}
+				<a class=font_hei href="{$field.arcurl}">{$field.title}</a>
+				{eyou:else /}
+				<a class=font_hei>上一篇：没有了</a>
+				{/eyou:beafter}
+				{eyou:beafter get='next'}
+				<a href="{content:nextlink}" class="back">{$field.title}</a>
+				{eyou:else /}
+				<a class="back">下一篇：没有了</a>
+				{/eyou:beafter}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{eyou:include file="comm/foot.htm" /}

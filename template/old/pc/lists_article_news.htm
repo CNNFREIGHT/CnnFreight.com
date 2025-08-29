@@ -1,43 +1,43 @@
-{eyou:include file="comm/head.htm" /}
-{eyou:include file="comm/top.htm" /}
-
-<div class="all">
-
-  <div class="news_cont clearboth">
-    
-		<div class="Left">
-      {eyou:include file="comm/sortnav.htm" /}
-    </div>
-
-    <div class="right_cont">
-      {eyou:include file="comm/position.htm" /}
-      <div class="list">
-        <ul>
-          {eyou:list loop='10' titlelen='30' infolen='160' orderby='add_time'}
-          <li class="clearboth">
-            <div class="imgbox"><img src="{$field.litpic}" /></div>
-            <div class="text">
-              <h3><a href="{$field.arcurl}">{$field.title}</a></h3>
-              <p>描述</p>
-              <div class="Text_r"><a href="{$field.arcurl}">查看详细</a></div>
-            </div>
-      		</li>
-       {/eyou:list}
-      </ul>
-    </div>
-
-    <div class="pageBox">
-      <div class="page clearboth">
-        <form method=Post action="">
-          {eyou:include file="comm/page.htm"/}
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
+{eyou:include file="comm/head.htm" /}
+{eyou:include file="comm/top.htm" /}
+
+<div class="all">
+
+  <div class="news_cont clearboth">
+    
+		<div class="Left">
+      {eyou:include file="comm/sortnav.htm" /}
+    </div>
+
+    <div class="right_cont">
+      {eyou:include file="comm/position.htm" /}
+      <div class="list">
+        <ul>
+          {eyou:list loop='10' titlelen='30' infolen='160' orderby='add_time'}
+          <li class="clearboth">
+            <div class="imgbox"><img src="{$field.litpic}" /></div>
+            <div class="text">
+              <h3><a href="{$field.arcurl}">{$field.title}</a></h3>
+              <p>描述</p>
+              <div class="Text_r"><a href="{$field.arcurl}">查看详细</a></div>
+            </div>
+      		</li>
+       {/eyou:list}
+      </ul>
+    </div>
+
+    <div class="pageBox">
+      <div class="page clearboth">
+        <form method=Post action="">
+          {eyou:include file="comm/page.htm"/}
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
 {eyou:include file="comm/foot.htm" /}
