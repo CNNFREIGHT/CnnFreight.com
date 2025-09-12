@@ -1,14 +1,14 @@
-<!-- 头部大屏 -->
-<div class="zi_banner">
-  <a href="#" target="_self"><img src="{$eyou.field.typelitpic}" /></a>
-</div>
-<div class="nav">
-  <div class="all">
-      <!--<i><a href="">{eyou:position style=' '/}</a></i>-->
-      {eyou:if condition="$Think.cookie.home_lang =='cn'"}
-    <i><a href="{eyou:global name='web_cmsurl' /}/">首页</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.ptypename}</a><span></span>{$eyou.field.typename}</i>
-    {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-    <i><a href="{eyou:global name='web_cmsurl' /}/">HOME</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.typeid|gettoptype=###,'englist_name'}</a><span></span>{$eyou.field.englist_name}</i>
-    {/eyou:if}
-  </div>
+<!-- 头部大屏 -->
+<div class="zi_banner">
+  <a href="#" target="_self"><img src="{$eyou.field.typelitpic}" /></a>
+</div>
+<div class="nav">
+  <div class="all">
+      <!--<i><a href="">{eyou:position style=' '/}</a></i>-->
+      {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+    <i><a href="{eyou:global name='web_cmsurl' /}/">首页</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.ptypename}</a><span></span>{$eyou.field.typename}</i>
+    {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+    <i><a href="{eyou:global name='web_cmsurl' /}/">HOME</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.typeid|gettoptype=###,'englist_name'}</a><span></span>{$eyou.field.englist_name}</i>
+    {/eyou:if}
+  </div>
 </div>

@@ -1,41 +1,41 @@
-    {eyou:include file="comm/head.htm"/}
-    {eyou:include file="comm/top.htm"/}
-    <div class="all">
-      
-      <div class="news_cont clearboth">
-        <div class="Left">
-          {eyou:if condition="$Think.cookie.home_lang =='cn'"}
-          {eyou:models type='sonself' currentstyle="cur"}
-          <a href="{$field.typeurl}" class="{$field.currentstyle}">{$field.typename} <img src="/template/old/images/leftbg2.png" /></a>
-          {/eyou:models}
-          {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-          {eyou:models type='sonself' currentstyle="cur"}
-          <a href="{$field.typeurl}" class="{$field.currentstyle}">{$field.englist_name} <img src="/template/old/images/leftbg2.png" /></a>
-          {/eyou:models}
-          {/eyou:if}
-        </div>
-
-        <div class="right_cont">
-          {eyou:include file="comm/position.htm" /}
-          <div class="list">
-            <ul>
-              {eyou:list titlelen='40'pagesize='9'infolen='50'}
-              <li class="clearboth">
-                <div class="imgbox"><img src="{$field.litpic}" /></div>
-                <div class="text">
-                  <h3><a href="{$field.arcurl}">{$field.title}</a></h3>
-                  <p>{$field.seo_description}</p>
-                  <div class="Text_r"><a href="{$field.arcurl}">More</a></div>
-                </div>
-              </li>
-              {/eyou:list}
-            </ul>
-          </div>
-            
-        </div>
-      </div>
-
-    </div>
-    
-
-{eyou:include file="comm/foot.htm" /}
+    {eyou:include file="comm/head.htm"/}
+    {eyou:include file="comm/top.htm"/}
+    <div class="all">
+      
+      <div class="news_cont clearboth">
+        <div class="Left">
+          {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+          {eyou:models type='sonself' currentstyle="cur"}
+          <a href="{$field.typeurl}" class="{$field.currentstyle}">{$field.typename} <img src="/template/old/images/leftbg2.png" /></a>
+          {/eyou:models}
+          {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+          {eyou:models type='sonself' currentstyle="cur"}
+          <a href="{$field.typeurl}" class="{$field.currentstyle}">{$field.englist_name} <img src="/template/old/images/leftbg2.png" /></a>
+          {/eyou:models}
+          {/eyou:if}
+        </div>
+
+        <div class="right_cont">
+          {eyou:include file="comm/position.htm" /}
+          <div class="list">
+            <ul>
+              {eyou:list titlelen='40'pagesize='9'infolen='50'}
+              <li class="clearboth">
+                <div class="imgbox"><img src="{$field.litpic}" /></div>
+                <div class="text">
+                  <h3><a href="{$field.arcurl}">{$field.title}</a></h3>
+                  <p>{$field.seo_description}</p>
+                  <div class="Text_r"><a href="{$field.arcurl}">More</a></div>
+                </div>
+              </li>
+              {/eyou:list}
+            </ul>
+          </div>
+            
+        </div>
+      </div>
+
+    </div>
+    
+
+{eyou:include file="comm/foot.htm" /}

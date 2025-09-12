@@ -1,0 +1,39 @@
+<?php
+//000000000000
+ exit();?>
+a:96:{s:2:"id";i:32;s:3:"aid";i:118;s:6:"typeid";i:32;s:7:"content";s:5237:"&lt;div class=&quot;finance&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; color: rgb(102, 102, 102); font-family: Arial, &amp;quot;Microsoft YaHei&amp;quot;; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(255, 255, 255);&quot;&gt;
+    &lt;div class=&quot;finance1&quot; style=&quot;margin: 0px; padding: 0px; border: 0px;&quot;&gt;
+        &lt;span style=&quot;display: block; font-size: 22px; color: rgb(40, 40, 40); text-align: center; padding-bottom: 10px;&quot;&gt;出口罐箱&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;saleBox clearboth&quot; style=&quot;margin: 0px; padding: 0px; border-width: 1px 1px 0px; border-top-style: solid;  border-bottom-style: initial; border-left-style: solid; border-top-color: rgb(236, 236, 236); border-right-color: rgb(236, 236, 236); border-bottom-color: initial; border-left-color: rgb(236, 236, 236); border-image: initial; height: 310px; overflow: hidden; color: rgb(102, 102, 102); font-family: Arial, &amp;quot;Microsoft YaHei&amp;quot;; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(255, 255, 255);&quot;&gt;
+    &lt;div style=&quot;margin: 0px; padding: 0px; border: 0px; float: left; width: 433.252px; box-sizing: border-box;&quot;&gt;
+        &lt;img src=&quot;/uploads/allimg/20250805/1-250P5144S12V.jpg&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; display: block; width: 433.252px; height: 308.044px; float: left;&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;word&quot; style=&quot;margin: 0px; padding: 0px 20px 0px 24px; border: 0px; float: left; width: 433.252px; box-sizing: border-box; position: relative;&quot;&gt;
+        &lt;span class=&quot;icon1&quot; style=&quot;display: block; position: absolute; width: 15px; height: 34px; top: 44px; left: -15px; background: url(&amp;quot;../images/arrow.png&amp;quot;) 0px 0px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;display: block; padding: 15px 0px 18px; color: rgb(65, 65, 65); font-size: 22px;&quot;&gt;罐箱出口及 DDP/DDU 服务&lt;/span&gt;
+        &lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; border: 0px; font-size: 14px; line-height: 30px;&quot;&gt;
+            宁波/上海/青岛口岸海运出口罐箱的全航线服务，从罐箱租赁、订舱、液体和气体装箱、报关、申报、报检、运输、 保险、堆存、内托等出口相关服务；公司具有多年危险品罐箱出口物流经验，常年承接 2、3、4、5、6、8、9 类危险品进出口业务 一站式解决您从国内工厂到国外仓库，门到门管家式物流。
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;saleBox saleBox2 clearboth&quot; style=&quot;margin: 0px; padding: 0px; border-width: 0px 1px 1px; border-top-style: initial;  border-bottom-style: solid; border-left-style: solid; border-top-color: initial; border-right-color: rgb(236, 236, 236); border-bottom-color: rgb(236, 236, 236); border-left-color: rgb(236, 236, 236); border-image: initial; height: 310px; overflow: hidden; color: rgb(102, 102, 102); font-family: Arial, &amp;quot;Microsoft YaHei&amp;quot;; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(255, 255, 255);&quot;&gt;
+    &lt;div style=&quot;margin: 0px; padding: 0px; border: 0px; float: right; width: 433.252px; box-sizing: border-box;&quot;&gt;
+        &lt;img src=&quot;/uploads/allimg/20250805/1-250P5144S22D.jpg&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; display: block; width: 433.252px; height: 243.438px; float: left;&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;word&quot; style=&quot;margin: 0px; padding: 0px 20px 0px 24px; border: 0px; float: right; width: 433.252px; box-sizing: border-box; position: relative;&quot;&gt;
+        &lt;span class=&quot;icon2&quot; style=&quot;display: block; position: absolute; width: 15px; height: 34px; top: 44px; right: -15px; background: url(&amp;quot;../images/arrow.png&amp;quot;) -15px 0px;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;display: block; padding: 15px 0px 18px; color: rgb(65, 65, 65); font-size: 22px;&quot;&gt;便捷全面&lt;/span&gt;
+        &lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; border: 0px; font-size: 14px;&quot;&gt;
+            提供液体、气体罐的目的港全航线出口物流服务，丰富的罐箱保障各种货物需求。
+        &lt;/p&gt;&lt;span style=&quot;display: block; padding: 15px 0px 18px; color: rgb(65, 65, 65); font-size: 22px;&quot;&gt;专业团队&lt;/span&gt;
+        &lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; border: 0px; font-size: 14px;&quot;&gt;
+            专业罐箱技术咨询服务，专业的物流操作人员，保障顺利出货。
+        &lt;/p&gt;&lt;span style=&quot;display: block; padding: 15px 0px 18px; color: rgb(65, 65, 65); font-size: 22px;&quot;&gt;管家式服务&lt;/span&gt;
+        &lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; border: 0px; font-size: 14px;&quot;&gt;
+            罐箱客服人员，为客户做好控箱提供管家式服务让罐箱使用率、周转率最大化。
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+    &lt;br/&gt;
+&lt;/p&gt;";s:12:"content_ey_m";s:0:"";s:8:"add_time";i:1747046432;s:11:"update_time";i:1754376512;s:7:"stypeid";s:0:"";s:7:"channel";i:6;s:4:"is_b";i:0;s:5:"title";s:12:"出口罐箱";s:8:"subtitle";s:0:"";s:6:"litpic";s:29:"/template/old/images/hdyw.jpg";s:7:"is_head";i:0;s:10:"is_special";i:0;s:6:"is_top";i:0;s:8:"is_recom";i:0;s:7:"is_jump";i:0;s:9:"is_litpic";i:0;s:7:"is_roll";i:0;s:8:"is_slide";i:0;s:10:"is_diyattr";i:0;s:6:"origin";s:0:"";s:6:"author";s:0:"";s:5:"click";i:0;s:7:"arcrank";i:0;s:9:"jumplinks";s:0:"";s:6:"ismake";i:0;s:9:"seo_title";s:0:"";s:12:"seo_keywords";s:0:"";s:15:"seo_description";s:0:"";s:11:"attrlist_id";i:0;s:11:"merchant_id";i:0;s:13:"free_shipping";i:0;s:11:"users_price";s:4:"0.00";s:13:"crossed_price";s:4:"0.00";s:19:"users_discount_type";i:0;s:10:"users_free";i:0;s:9:"old_price";s:4:"0.00";s:9:"sales_num";i:0;s:13:"virtual_sales";i:0;s:9:"sales_all";i:0;s:11:"stock_count";i:0;s:10:"stock_show";i:1;s:9:"prom_type";i:0;s:14:"logistics_type";s:1:"1";s:8:"tempview";s:0:"";s:6:"status";i:1;s:10:"sort_order";i:100;s:4:"lang";s:2:"cn";s:8:"admin_id";i:1;s:8:"users_id";i:0;s:12:"arc_level_id";i:0;s:12:"restric_type";i:0;s:11:"users_score";s:0:"";s:6:"is_del";i:0;s:10:"del_method";i:0;s:7:"joinaid";i:0;s:9:"downcount";i:0;s:8:"appraise";i:0;s:10:"collection";i:0;s:12:"htmlfilename";s:0:"";s:11:"province_id";i:0;s:7:"city_id";i:0;s:7:"area_id";i:0;s:12:"removal_time";i:0;s:10:"no_vip_pay";i:0;s:23:"editor_remote_img_local";i:1;s:21:"editor_img_clear_link";i:1;s:6:"reason";N;s:10:"stock_code";N;s:11:"channeltype";i:6;s:15:"current_channel";i:6;s:9:"parent_id";i:6;s:5:"topid";i:6;s:8:"typename";s:12:"出口罐箱";s:7:"dirname";s:15:"chukouguanxiang";s:7:"dirpath";s:32:"/jinchukouhuodai/chukouguanxiang";s:11:"diy_dirpath";s:32:"/jinchukouhuodai/chukouguanxiang";s:8:"rulelist";s:25:"{栏目目录}/index.html";s:8:"ruleview";s:25:"{栏目目录}/{aid}.html";s:12:"englist_name";s:11:"Outlet Tank";s:5:"grade";i:1;s:8:"typelink";s:0:"";s:8:"templist";s:21:"lists_single_page.htm";s:9:"is_hidden";i:0;s:7:"is_part";i:0;s:10:"is_release";i:0;s:10:"weapp_code";s:0:"";s:6:"target";i:0;s:8:"nofollow";i:0;s:11:"typearcrank";i:0;s:11:"empty_logic";i:0;s:10:"page_limit";s:0:"";s:9:"total_arc";i:0;s:11:"Subtypename";s:0:"";}

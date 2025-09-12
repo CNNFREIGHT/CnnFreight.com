@@ -1,11 +1,11 @@
-/**
- * 外贸助手的JS文件的多语言包
- */
-function ey_foreign(string, ...args) {
-    return string.replace(/%([a-zA-Z0-9]{1,1})/g, function() {
-        return args.shift();
-    });
-}
+/**
+ * 外贸助手的JS文件的多语言包
+ */
+function ey_foreign(string, ...args) {
+    return string.replace(/%([a-zA-Z0-9]{1,1})/g, function() {
+        return args.shift();
+    });
+}
 var ey_foreign_page1 = "Home";
 var ey_foreign_page2 = "Pre";
 var ey_foreign_page3 = "Next";
@@ -32,6 +32,14 @@ var ey_foreign_gbook17 = "Mobile verification code";
 var ey_foreign_gbook18 = "Get verification code";
 var ey_foreign_gbook19 = "Can't see clearly? Click to change the verification code";
 var ey_foreign_gbook20 = "Can't see clearly? %sClick to replace%s";
+var ey_foreign_gbook21 = "Please enter your email address!";
+var ey_foreign_gbook22 = "Please enter the email verification code!";
+var ey_foreign_gbook23 = "Please enter a valid email address!";
+var ey_foreign_gbook24 = "The email verification code is incorrect, please re-enter!";
+var ey_foreign_gbook21 = "Please enter your email address!";
+var ey_foreign_gbook22 = "Please enter the email verification code!";
+var ey_foreign_gbook23 = "Please enter a valid email address!";
+var ey_foreign_gbook24 = "The email verification code is incorrect, please re-enter!";
 var ey_foreign_gbook21 = "Please enter your email address!";
 var ey_foreign_gbook22 = "Please enter the email verification code!";
 var ey_foreign_gbook23 = "Please enter a valid email address!";

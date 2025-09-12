@@ -1,19 +1,19 @@
-<!-- 当前位置 -->
-
-<div class="subTitle">
-  <div class="name">
-      <!-- <span>01-01</span> -->
-      {eyou:if condition="$Think.cookie.home_lang =='cn'"}
-      <em>{$eyou.field.typename}<span>{$eyou.field.englist_name}</span></em>
-      {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-      <em>{$eyou.field.englist_name}<span></span></em>
-      {/eyou:if}
-  </div>
-  <div class="navbar">
-    {eyou:if condition="$Think.cookie.home_lang =='cn'"}
-    <i><a href="{eyou:global name='web_cmsurl' /}/">首页</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.ptypename}</a><span></span>{$eyou.field.typename}</i>
-    {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-    <i><a href="{eyou:global name='web_cmsurl' /}/">HOME</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.typeid|gettoptype=###,'englist_name'}</a><span></span>{$eyou.field.englist_name}</i>
-    {/eyou:if}
-  </div>
+<!-- 当前位置 -->
+
+<div class="subTitle">
+  <div class="name">
+      <!-- <span>01-01</span> -->
+      {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+      <em>{$eyou.field.typename}<span>{$eyou.field.englist_name}</span></em>
+      {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+      <em>{$eyou.field.englist_name}<span></span></em>
+      {/eyou:if}
+  </div>
+  <div class="navbar">
+    {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+    <i><a href="{eyou:global name='web_cmsurl' /}/">首页</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.ptypename}</a><span></span>{$eyou.field.typename}</i>
+    {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+    <i><a href="{eyou:global name='web_cmsurl' /}/">HOME</a><span></span><a href="{$eyou.field.ptypeurl}">{$eyou.field.typeid|gettoptype=###,'englist_name'}</a><span></span>{$eyou.field.englist_name}</i>
+    {/eyou:if}
+  </div>
 </div>

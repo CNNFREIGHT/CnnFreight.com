@@ -2369,6 +2369,7 @@ EOF;
                     if (empty($val['needmoney'])) {
                         $btn_txt = "安装";
                     } else {
+                        continue;
                         $btn_txt = "购买";
                     }
                     $btn = "<a href=\"javascript:void(0);\" onclick=\"goPage(this);\" data-id=\"{$val['id']}\" data-weapp_code=\"{$val['weapp_code']}\"  data-min_version=\"{$val['min_version']}\" data-buy=\"{$val['buy']}\" data-needmoney=\"{$val['needmoney']}\">{$btn_txt}</a>";

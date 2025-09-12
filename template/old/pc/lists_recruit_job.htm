@@ -1,61 +1,61 @@
-{eyou:include file="comm/head.htm" /}
-{eyou:include file="comm/top.htm" /}
-
-	<div class="all">
-  	<div class="cooperate_cont clearboth">
-			<div class="Left">
-				{eyou:include file="comm/sortnav.htm" /}
-			</div>
-			<div class="right_cont">
-				{eyou:include file="comm/position.htm"/}
-				<div style="text-align:center;margin-bottom:100px; margin-top:0px;line-height:30px;font-size:14px;color:#999999;font-family:微软雅黑;">
-					<table cellSpacing=0 cellPadding=0 width=100%align=center border=0>
-									<table bordercolor=#ededed cellspacing=0 cellpadding=8 width=100%border=0>
-											<tr>
-												<td bgcolor="#F2F2F2" colspan=4 height="30" valign="middle">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0" height="30">
-														<tr>
-															<td width="34%"><div align="center">职位名称</div></td>
-															<td width="20%"><div align="center">招聘人数</div></td>
-															<td width="27%"><div align="center">工作地点</div></td>
-															<td width="19%"><div align="center">薪资</div></td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-											{eyou:list loop='10'titlelen='30'infolen='160'orderby='add_time'}
-											
-											<tr>
-												<td width="34%" height="30" align="center" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;border-left:1px solid #E3E3E3;">
-													<div align="left" style="padding-left:10px">
-														<a href="{$field.arcurl}" title="查看详情>>">
-															{$field.title}
-														</a>
-													</div>
-												</td>
-												<td width="20%" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
-													<div align="center">
-														{eyou:field aid='$field.aid' addfields='zprs' /}
-													</div>
-												</td>
-												<td width="26%" align="center" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
-													<div align="left" style="padding-left:10px">
-														{eyou:field aid='$field.aid' addfields='gzdd' /}
-													</div>
-												</td>
-												<td width="20%" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
-													<div align="center">
-														{eyou:field aid='$field.aid' addfields='xzdy' /}
-													</div>
-												</td>
-											</tr>
-
-											{/eyou:list}
-									</table>
-					</table>
-				</div>
-			</div>
-  </div>
-</div>
-
-{eyou:include file="comm/foot.htm" /}
+{eyou:include file="comm/head.htm" /}
+{eyou:include file="comm/top.htm" /}
+
+	<div class="all">
+  	<div class="cooperate_cont clearboth">
+			<div class="Left">
+				{eyou:include file="comm/sortnav.htm" /}
+			</div>
+			<div class="right_cont">
+				{eyou:include file="comm/position.htm"/}
+				<div style="text-align:center;margin-bottom:100px; margin-top:0px;line-height:30px;font-size:14px;color:#999999;font-family:微软雅黑;">
+					<table cellSpacing=0 cellPadding=0 width=100%align=center border=0>
+									<table bordercolor=#ededed cellspacing=0 cellpadding=8 width=100%border=0>
+											<tr>
+												<td bgcolor="#F2F2F2" colspan=4 height="30" valign="middle">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0" height="30">
+														<tr>
+															<td width="34%"><div align="center">职位名称</div></td>
+															<td width="20%"><div align="center">招聘人数</div></td>
+															<td width="27%"><div align="center">工作地点</div></td>
+															<td width="19%"><div align="center">薪资</div></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											{eyou:list loop='10'titlelen='30'infolen='160'orderby='add_time'}
+											
+											<tr>
+												<td width="34%" height="30" align="center" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;border-left:1px solid #E3E3E3;">
+													<div align="left" style="padding-left:10px">
+														<a href="{$field.arcurl}" title="查看详情>>">
+															{$field.title}
+														</a>
+													</div>
+												</td>
+												<td width="20%" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
+													<div align="center">
+														{eyou:field aid='$field.aid' addfields='zprs' /}
+													</div>
+												</td>
+												<td width="26%" align="center" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
+													<div align="left" style="padding-left:10px">
+														{eyou:field aid='$field.aid' addfields='gzdd' /}
+													</div>
+												</td>
+												<td width="20%" style="border-right:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;">
+													<div align="center">
+														{eyou:field aid='$field.aid' addfields='xzdy' /}
+													</div>
+												</td>
+											</tr>
+
+											{/eyou:list}
+									</table>
+					</table>
+				</div>
+			</div>
+  </div>
+</div>
+
+{eyou:include file="comm/foot.htm" /}

@@ -26,7 +26,7 @@
   padding: 0;
   margin: 0;
   overflow: hidden;
-  line-height: 30px;
+  line-height: 23px;
 }
 .edui-default a.edui-box {
   display: block;
@@ -548,8 +548,8 @@ div.edui-box {
 .edui-default .edui-toolbar .edui-button .edui-icon,
 .edui-default .edui-toolbar .edui-menubutton .edui-icon,
 .edui-default .edui-toolbar .edui-splitbutton .edui-icon {
-    height: 30px !important;
-    width: 30px !important;
+    height: 23px !important;
+    width: 23px !important;
     /*background-image: url(../images/icons.png);*/
     /*background-image: url(../images/icons.gif) \9;*/
     background-position: center;
@@ -2172,24 +2172,24 @@ div.edui-box {
 .edui-quick-operate .icon.icon-trash:before {
     content: "\e87c";
 }
-@font-face {
-  font-family: "edui-iconfont"; /* Project id 4977043 */
-  src: url('../fonts/iconfont.woff2?t=1752714827853') format('woff2'),
-       url('../fonts/iconfont.woff?t=1752714827853') format('woff'),
-       url('../fonts/iconfont.ttf?t=1752714827853') format('truetype');
-}
-
-.edui-iconfont {
-  font-family: "edui-iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.edui-default .edui-for-drafts .edui-icon:before {
-  content: "\e60b";
-}
+@font-face {
+  font-family: "edui-iconfont"; /* Project id 4977043 */
+  src: url('../fonts/iconfont.woff2?t=1752714827853') format('woff2'),
+       url('../fonts/iconfont.woff?t=1752714827853') format('woff'),
+       url('../fonts/iconfont.ttf?t=1752714827853') format('truetype');
+}
+
+.edui-iconfont {
+  font-family: "edui-iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.edui-default .edui-for-drafts .edui-icon:before {
+  content: "\e60b";
+}
 
 /*自定义-手机预览样式*/
 .edui-default .edui-for-previewmobile .edui-icon{

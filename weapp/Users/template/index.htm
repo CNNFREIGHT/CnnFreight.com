@@ -1,0 +1,107 @@
+{include file="header.htm" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    {include file="bar.htm" /}
+    <div class="flexigrid">
+	 <div class="ncap-form-default">
+            <dl class="row">
+                <dt class="tit" style="padding-left: 10px;">
+                    <label>URL模式</label>
+                </dt>
+                <dd class="opt">
+                    <label>
+                        <input type="radio" name="seo_pseudo" value="1" {if condition="empty($usersConfData.data.seo_pseudo) || 1 == $usersConfData.data.seo_pseudo"}checked="checked"{/if}>动态URL&nbsp;
+                    </label>
+                    <label>
+                        <input type="radio" name="seo_pseudo" value="3" {if condition="3 == $usersConfData.data.seo_pseudo"}checked="checked"{/if}>伪静态化&nbsp;
+                    </label>
+                </dd>
+            </dl>
+        </div>
+        【本插件相关介绍】<br>
+		功能一：添加了会员之间的关注功能<br>
+		功能二：添加了投稿数量、被关注的数量和关注的数量<br>
+		功能三：在个人中心可以显示出会员的个人资料<br>
+		功能四：在个人会员中心可以查看该用户的投稿文章、下载内容以及关注信息<br>
+		功能五：还支持问答和收藏显示内容，官方插件中心购买后会自动显示出来！<br>
+		【本插件调用方法】<br>
+		此插件目前支持会员投稿后显示会员信息，点击会员即可进入会员个人主页！<br>
+		以下是调用代码：<br>伪静态标签 ：<br>
+		<textarea id="jtbar" style="margin-top: 0px;margin-bottom: 0px;height: 255px;width: 1000px;">
+        {literal}{eyou:memberinfos mid='$users.users_id' id='users'}{/literal}
+            &lt;a href="{literal}{eyou:url link='plugins/Users/user' /}{/literal}/{literal}{$users.users_id}.html{/literal}">
+                {literal}会员昵称：{$users.nickname}{/literal}
+                {literal}会员头像：&lt;img src="{$users.head_pic}" width='50' height='50' />{/literal}
+            {literal}&lt;/a>{/literal}
+            {literal}&lt;a href="javascript:void(0);" id="guanzhu_1595557091" onclick="guanzhu_1595557091(this);" data-html="取消关注">关注&lt;/a>{/literal}
+            {literal}投稿量：&lt;font id="tougaocount">&lt;/font>{/literal}
+            {literal}粉丝量：&lt;font id="fensicount">&lt;/font>{/literal}
+            {literal}关注量：&lt;font id="guanzhucount">&lt;/font>{/literal}
+            {literal}&lt;input type="hidden" id="users_15366919619" value="{$users.users_id}">{/literal}
+            {literal}{$users.hidden}{/literal}
+        {literal}{/eyou:memberinfos}{/literal}
+        {literal}{:hookexec('Users/Users/show')}{/literal}
+        </textarea>
+		<button class="btn" data-clipboard-target="#jtbar" aria-label="已复制" style="display: block;">点击复制伪静态标签</button><br>
+	   动态标签：<br>
+		<textarea id="dtbar" style="margin-top: 0px;margin-bottom: 0px;height: 255px;width: 1000px;">
+        {literal}{eyou:memberinfos mid='$users.users_id' id='users'}{/literal}<br>
+            &lt;a href="{literal}{eyou:url link='plugins/Users/user' /}{/literal}&id={literal}{$users.users_id}{/literal}"><br>
+                {literal}会员昵称：{$users.nickname}{/literal}
+                {literal}会员头像：&lt;img src="{$users.head_pic}" width='50' height='50' />{/literal}
+            {literal}&lt;/a>{/literal}
+            {literal}&lt;a href="javascript:void(0);" id="guanzhu_1595557091" onclick="guanzhu_1595557091(this);" data-html="取消关注">关注&lt;/a>{/literal}
+            {literal}投稿量：&lt;font id="tougaocount">&lt;/font>{/literal}
+            {literal}粉丝量：&lt;font id="fensicount">&lt;/font>{/literal}
+            {literal}关注量：&lt;font id="guanzhucount">&lt;/font>{/literal}
+            {literal}&lt;input type="hidden" id="users_15366919619" value="{$users.users_id}">{/literal}
+            {literal}{$users.hidden}{/literal}
+        {literal}{/eyou:memberinfos}{/literal}
+        {literal}{:hookexec('Users/Users/show')}{/literal}
+	   </textarea>
+	   <button class="btn" data-clipboard-target="#dtbar" aria-label="已复制" style="display: block;">点击复制动态标签</button><br>
+    </div>
+</div>
+<script type="text/javascript" src="__SKIN__/js/clipboard.min.js"></script>
+<script type="text/javascript">
+var clipboard = new Clipboard('.btn');
+
+clipboard.on('success', function(e) {
+	var msg = e.trigger.getAttribute('aria-label');
+	layer.msg(msg);
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+});
+$(function(){
+        $('input[name=seo_pseudo]').click(function(){
+            layer_loading('正在处理');
+            var value = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{:weapp_url('Users/Users/setData')}",
+                data: {name:'seo_pseudo',value:value,_ajax:1},
+                dataType: "JSON",
+                success: function(res){
+                    layer.closeAll();
+                    if(parseInt(res.code) == 1){
+                        layer.msg(res.msg, {icon: 1, time:500}, function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        layer.alert(res.msg, {icon: 5});
+                    }
+                },
+                error: function(e){
+                    layer.closeAll();
+                    layer.alert('未知错误，无法继续~', {icon: 5});
+                }
+            });
+        });
+    });
+ </script>
+{include file="footer.htm" /}
