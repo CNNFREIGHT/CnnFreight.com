@@ -1,213 +1,213 @@
-{include file="header.htm" /}
-<body style="background-color: #FFF; overflow: auto;">
-<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
-<div id="append_parent"></div>
-<div id="ajaxwaitid"></div>
-<div class="page">
-    <div class="fixed-bar">
-        <div class="item-title">
-            <a class="back_xin" href="{:weapp_url('Systemdoctor/Systemdoctor/index')}" title="返回列表"><i class="iconfont e-fanhui"></i></a>
-            <div class="subject">
-                <h3>文档批量设置</h3>
-                <h5></h5>
-            </div>
-            <ul class="tab-base nc-row">
-                <li>
-                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'1'])}" class="tab {eq name='$channel' value='1'}current{/eq}"><span>文章模型</span></a>
-                </li>
-                <li>
-                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'4'])}" class="tab {eq name='$channel' value='4'}current{/eq}"><span>下载模型</span></a>
-                </li>
-                <li>
-                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'5'])}" class="tab {eq name='$channel' value='5'}current{/eq}"><span>视频模型</span></a>
-                </li>
-				 <li>
-                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'3'])}" class="tab {eq name='$channel' value='3'}current{/eq}"><span>图集模型</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="ncap-form-default">
-        <dl class="row">
-            <dt class="tit">所属栏目</dt>
-            <dd class="opt">
-                <select name="typeid" id="typeid">
-                    <option value="0">默认全部栏目</option>
-                    {$arctype_html}
-                </select>
-            </dd>
-        </dl>
-        <dl class="row">
-            <dt class="tit">文档ID段</dt>
-            <dd class="opt">
-                <input style="width:100px;" name="startid" type="text" placeholder="起始ID" id="startid" class="alltxt" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" onpaste="this.value=this.value.replace(/[^\d]/g,'')"/>
-                <span style="color: #999;font-weight: bold;font-size:26px;">&nbsp;-&nbsp;</span>
-                <input style="width:100px;" name="endid" type="text" placeholder="结束ID" id="endid" class="alltxt" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" onpaste="this.value=this.value.replace(/[^\d]/g,'')"/>
-            </dd>
-        </dl>
-        <dl class="row"><dt class="tit"><label><b>批量更新文档</b></label></dt></dl>
-		<dl class="row">
-		<dt class="tit" style="width:100%; color:#333;font-size:15px;text-align: left; margin-left: 40px;">
-		<h1 style="font-size:15px;">☼使用提示：操作前需谨慎操作，一定要查看清楚再操作，避免无法返回的损失</h1>
-		<h1 style="font-size:15px;">☼如果填入框后面带<q style="color:RED">此项不操作</q>按钮，您点击后这一项将不处理，反之会跟其它项一起执行，请知晓</h1>
-		<h1 style="font-size:15px;">☼文档浏览量和下载数默认为<q style="color:RED">0</q>是为不修改，其它则修改</h1>
-		{if condition="$channel == 5" /}
-		 <h1 style="font-size:15px; color:red;">◇程序用于批量设置文档的付费限制，此操作不可恢复，请谨慎操作。</h1>
-		{/if}
-		</dl>
-        {if condition="$channel == 1"}
-            {include file="paymode_body_1.htm" /}
-        {elseif condition="$channel == 4" /}
-            {include file="paymode_body_4.htm" /}
-        {elseif condition="$channel == 5" /}
-            {include file="paymode_body_5.htm" /}
-		{elseif condition="$channel == 3" /}
-            {include file="paymode_body_3.htm" /}
-        {/if}
-    </div>
-</div>
-
-<script type="text/javascript">
-    // 表单提交
-    function submit_form(submit_type){
-        layer_loading('正在处理');
-        var formData = '';
-        formData += 'typeid=' + $('#typeid').val();
-        formData += '&startid=' + $('#startid').val();
-        formData += '&endid=' + $('#endid').val();
-        formData += '&' + $('#'+submit_type).serialize();
-        $.ajax({
-            type : 'post',
-            url : "{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['_ajax'=>1])}",
-            data : formData,
-            dataType : 'json',
-            success : function(res){
-                layer.closeAll();
-                if(res.code == 1){
-                    layer.msg(res.msg, {shade: layer_shade, time: 1000});
-                }else{
-                    showErrorMsg(res.msg);
-                }
-            },
-            error: function(e){
-                layer.closeAll();
-                showErrorAlert(e.responseText);
-            }
-        });
-    }
-				
-/**
- * 批量笔者操作
- */
-
-function paymode_index(obj, name, title)
-{
-    var a = [];
-    var k = 0;
-    var aids = '';
-    $('input[name^='+name+']').each(function(i,o){
-        if($(o).is(':checked')){
-            a.push($(o).val());
-            if (k > 0) {
-                aids += ',';
-            }
-            aids += $(o).val();
-            k++;
-        }
-    })
-    if(a.length == 0){
-        layer.alert('请至少选择一项', {
-            shade: layer_shade,
-            area: ['480px', '190px'],
-            move: false,
-            title: '提示',
-            btnAlign:'r',
-            closeBtn: 3,
-            success: function () {
-                  $(".layui-layer-content").css('text-align', 'left');
-              }
-        });
-        return;
-    }
-
-    var url = $(obj).attr('data-url');
-    //iframe窗
-    layer.open({
-        type: 2,
-        title: title,
-        fixed: true, //不固定
-        shadeClose: false,
-        shade: layer_shade,
-        maxmin: false, //开启最大化最小化按钮
-        area: ['390px', '250px'],
-        content: url,
-        success: function(layero, index){
-            var body = layer.getChildFrame('body', index);
-            body.find('input[name=aids]').val(aids);
-        }
-    });
-}
-
-function set_author(value)
-{
-    top.layer.prompt({
-            title:'设置作者默认名称',
-            shade: layer_shade,
-            btnAlign:'r',
-            closeBtn: 3,
-            value: value
-        },
-        function(val, index){
-            $.ajax({
-                url: eyou_basefile + "?m=admin&c=Admin&a=ajax_setfield&_ajax=1",
-                type: 'POST',
-                dataType: 'JSON',
-                data: {field:'pen_name',value:val},
-                success: function(res){
-                    if (res.code == 1) {
-						//window.parent.location.reload();
-                        $('#pen_name').val(val);
-                        top.layer.msg(res.msg, {icon: 1, time:1000});
-                    } else {
-                        showErrorMsg(res.msg);
-                        return false;
-                    }
-                },
-                error: function(e){
-                    showErrorMsg(e.responseText);
-                    return false;
-                }
-            });
-            top.layer.close(index);
-        }
-    );
-}
-
- function test(Names){
-	var Name
-	for (var i=1;i<4;i++){	
-		var tempname="mune_x"+i                                                                            
-		var NewsHot="x"+i	
-		if (Names==tempname){
-			Nnews=document.getElementById(NewsHot)
-			Nnews.style.display='';
-		}else{
-			Nnews=document.getElementById(NewsHot)
-			Nnews.style.display='none';   
-		}
-	}
-}
-function deleteRow(button) {
-  // 获取按钮的父元素 <td>
-  var dd = button.parentNode;
-   var dt = button.parentNode;
-  // 获取该<td>的父元素 <tr>
-  var dl = dd.parentNode;
-   var dl = dt.parentNode;
-  // 删除<tr>
-  dl.parentNode.removeChild(dl);
-
-}
-</script>
-
+{include file="header.htm" /}
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title">
+            <a class="back_xin" href="{:weapp_url('Systemdoctor/Systemdoctor/index')}" title="返回列表"><i class="iconfont e-fanhui"></i></a>
+            <div class="subject">
+                <h3>文档批量设置</h3>
+                <h5></h5>
+            </div>
+            <ul class="tab-base nc-row">
+                <li>
+                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'1'])}" class="tab {eq name='$channel' value='1'}current{/eq}"><span>文章模型</span></a>
+                </li>
+                <li>
+                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'4'])}" class="tab {eq name='$channel' value='4'}current{/eq}"><span>下载模型</span></a>
+                </li>
+                <li>
+                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'5'])}" class="tab {eq name='$channel' value='5'}current{/eq}"><span>视频模型</span></a>
+                </li>
+				 <li>
+                    <a href="{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['channel'=>'3'])}" class="tab {eq name='$channel' value='3'}current{/eq}"><span>图集模型</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ncap-form-default">
+        <dl class="row">
+            <dt class="tit">所属栏目</dt>
+            <dd class="opt">
+                <select name="typeid" id="typeid">
+                    <option value="0">默认全部栏目</option>
+                    {$arctype_html}
+                </select>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">文档ID段</dt>
+            <dd class="opt">
+                <input style="width:100px;" name="startid" type="text" placeholder="起始ID" id="startid" class="alltxt" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" onpaste="this.value=this.value.replace(/[^\d]/g,'')"/>
+                <span style="color: #999;font-weight: bold;font-size:26px;">&nbsp;-&nbsp;</span>
+                <input style="width:100px;" name="endid" type="text" placeholder="结束ID" id="endid" class="alltxt" onkeyup="this.value=this.value.replace(/[^\d]/g,'');" onpaste="this.value=this.value.replace(/[^\d]/g,'')"/>
+            </dd>
+        </dl>
+        <dl class="row"><dt class="tit"><label><b>批量更新文档</b></label></dt></dl>
+		<dl class="row">
+		<dt class="tit" style="width:100%; color:#333;font-size:15px;text-align: left; margin-left: 40px;">
+		<h1 style="font-size:15px;">☼使用提示：操作前需谨慎操作，一定要查看清楚再操作，避免无法返回的损失</h1>
+		<h1 style="font-size:15px;">☼如果填入框后面带<q style="color:RED">此项不操作</q>按钮，您点击后这一项将不处理，反之会跟其它项一起执行，请知晓</h1>
+		<h1 style="font-size:15px;">☼文档浏览量和下载数默认为<q style="color:RED">0</q>是为不修改，其它则修改</h1>
+		{if condition="$channel == 5" /}
+		 <h1 style="font-size:15px; color:red;">◇程序用于批量设置文档的付费限制，此操作不可恢复，请谨慎操作。</h1>
+		{/if}
+		</dl>
+        {if condition="$channel == 1"}
+            {include file="paymode_body_1.htm" /}
+        {elseif condition="$channel == 4" /}
+            {include file="paymode_body_4.htm" /}
+        {elseif condition="$channel == 5" /}
+            {include file="paymode_body_5.htm" /}
+		{elseif condition="$channel == 3" /}
+            {include file="paymode_body_3.htm" /}
+        {/if}
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 表单提交
+    function submit_form(submit_type){
+        layer_loading('正在处理');
+        var formData = '';
+        formData += 'typeid=' + $('#typeid').val();
+        formData += '&startid=' + $('#startid').val();
+        formData += '&endid=' + $('#endid').val();
+        formData += '&' + $('#'+submit_type).serialize();
+        $.ajax({
+            type : 'post',
+            url : "{:weapp_url('Systemdoctor/Systemdoctor/paymode_index', ['_ajax'=>1])}",
+            data : formData,
+            dataType : 'json',
+            success : function(res){
+                layer.closeAll();
+                if(res.code == 1){
+                    layer.msg(res.msg, {shade: layer_shade, time: 1000});
+                }else{
+                    showErrorMsg(res.msg);
+                }
+            },
+            error: function(e){
+                layer.closeAll();
+                showErrorAlert(e.responseText);
+            }
+        });
+    }
+				
+/**
+ * 批量笔者操作
+ */
+
+function paymode_index(obj, name, title)
+{
+    var a = [];
+    var k = 0;
+    var aids = '';
+    $('input[name^='+name+']').each(function(i,o){
+        if($(o).is(':checked')){
+            a.push($(o).val());
+            if (k > 0) {
+                aids += ',';
+            }
+            aids += $(o).val();
+            k++;
+        }
+    })
+    if(a.length == 0){
+        layer.alert('请至少选择一项', {
+            shade: layer_shade,
+            area: ['480px', '190px'],
+            move: false,
+            title: '提示',
+            btnAlign:'r',
+            closeBtn: 3,
+            success: function () {
+                  $(".layui-layer-content").css('text-align', 'left');
+              }
+        });
+        return;
+    }
+
+    var url = $(obj).attr('data-url');
+    //iframe窗
+    layer.open({
+        type: 2,
+        title: title,
+        fixed: true, //不固定
+        shadeClose: false,
+        shade: layer_shade,
+        maxmin: false, //开启最大化最小化按钮
+        area: ['390px', '250px'],
+        content: url,
+        success: function(layero, index){
+            var body = layer.getChildFrame('body', index);
+            body.find('input[name=aids]').val(aids);
+        }
+    });
+}
+
+function set_author(value)
+{
+    top.layer.prompt({
+            title:'设置作者默认名称',
+            shade: layer_shade,
+            btnAlign:'r',
+            closeBtn: 3,
+            value: value
+        },
+        function(val, index){
+            $.ajax({
+                url: eyou_basefile + "?m=admin&c=Admin&a=ajax_setfield&_ajax=1",
+                type: 'POST',
+                dataType: 'JSON',
+                data: {field:'pen_name',value:val},
+                success: function(res){
+                    if (res.code == 1) {
+						//window.parent.location.reload();
+                        $('#pen_name').val(val);
+                        top.layer.msg(res.msg, {icon: 1, time:1000});
+                    } else {
+                        showErrorMsg(res.msg);
+                        return false;
+                    }
+                },
+                error: function(e){
+                    showErrorMsg(e.responseText);
+                    return false;
+                }
+            });
+            top.layer.close(index);
+        }
+    );
+}
+
+ function test(Names){
+	var Name
+	for (var i=1;i<4;i++){	
+		var tempname="mune_x"+i                                                                            
+		var NewsHot="x"+i	
+		if (Names==tempname){
+			Nnews=document.getElementById(NewsHot)
+			Nnews.style.display='';
+		}else{
+			Nnews=document.getElementById(NewsHot)
+			Nnews.style.display='none';   
+		}
+	}
+}
+function deleteRow(button) {
+  // 获取按钮的父元素 <td>
+  var dd = button.parentNode;
+   var dt = button.parentNode;
+  // 获取该<td>的父元素 <tr>
+  var dl = dd.parentNode;
+   var dl = dt.parentNode;
+  // 删除<tr>
+  dl.parentNode.removeChild(dl);
+
+}
+</script>
+
 {include file="footer.htm" /}

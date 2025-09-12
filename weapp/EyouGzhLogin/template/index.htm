@@ -1,222 +1,222 @@
-{include file="header.htm" /}
-<body class="bodystyle" style="overflow-y: scroll; cursor: default; -moz-user-select: inherit;">
-<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
-<div id="append_parent"></div>
-<div id="ajaxwaitid"></div>
-<div class="page">
-    {include file="bar.htm" /}
-    <form class="form-horizontal" id="post_form" action="{:weapp_url('EyouGzhLogin/EyouGzhLogin/index')}" method="post">
-        <div class="ncap-form-default">
-            <dl class="row">
-                <dt class="tit">
-                    <label>扫码功能</label>
-                </dt>
-                <dd class="opt">
-                    <div class="onoff">
-                        <label for="is_open1" class="cb-enable {if condition='!empty($data.is_open)'}selected{/if}">开启</label>
-                        <label for="is_open0" class="cb-disable {if condition='empty($data.is_open)'}selected{/if}">关闭</label>
-                        <input id="is_open1" name="is_open" value="1" type="radio" onclick="wechat_is_open(this);" {if condition="!empty($data.is_open) "} checked="checked" {/if}>
-                        <input id="is_open0" name="is_open" value="0" type="radio" onclick="wechat_is_open(this);" {if condition="empty($data.is_open) "} checked="checked" {/if}>
-                    </div>
-                    <p class="notic">开启后，后台登录界面将支持普通登录/扫码登录</p>
-                </dd>
-            </dl>
-            <div id="div_mode" class="{if condition='empty($data.is_open)'}none{/if}">
-                <dl class="row">
-                    <dt class="tit">
-                        <label>扫码模式</label>
-                    </dt>
-                    <dd class="opt">
-                        <label class="curpoin"><input type="radio" name="mode" value="WechatLogin" onclick="scan_mode(this);" {if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}checked="checked"{/if}>微信应用&nbsp;<font color="red" class="{notempty name='$data.install_time'} none {/notempty}">(推荐)</font></label>
-                        &nbsp;
-                        <label class="curpoin {notempty name='$data.install_time'} none {/notempty}"><input type="radio" name="mode" value="EyouGzhLogin" onclick="scan_mode(this);" {if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}checked="checked"{/if}>官方公众号&nbsp;(有不稳定因素)</label>
-                        &nbsp;
-                        <p class="notic">每个模式有各自的说明文档</p>
-                        &nbsp;
-                        <a id="jc_WechatLogin" class="{if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}none{/if}" href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=28268', '微信应用的说明书');" style="font-size: 12px;position: absolute;">查看说明</a>
-                        <a id="jc_EyouGzhLogin" class="{if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}none{/if}" href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=28267', '官方公众号的说明书');" style="font-size: 12px;position: absolute;">查看说明</a>
-                    </dd>
-                </dl>
-                <div id="div_gzhlogin" class="{if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}none{/if}">
-                    <dl class="row">
-                        <dt class="tit">
-                            <label>强制扫码登录</label>
-                        </dt>
-                        <dd class="opt">
-                            <div class="onoff">
-                                <label for="gzh_force1" class="cb-enable {if condition='!empty($data.gzh.force)'}selected{/if}">开启</label>
-                                <label for="gzh_force0" class="cb-disable {if condition='empty($data.gzh.force)'}selected{/if}">关闭</label>
-                                <input id="gzh_force1" name="gzh[force]" value="1" type="radio" onclick="forcelogin(this, 1);" {if condition="!empty($data.gzh.force)"} checked="checked" {/if}>
-                                <input id="gzh_force0" name="gzh[force]" value="0" type="radio" onclick="forcelogin(this, 1);" {if condition="empty($data.gzh.force)"} checked="checked" {/if}>
-                            </div>
-                            <p class="notic">开启后，后台只支持微信扫码登录</p>
-                            <p id="notic2_tips_1" class="notic2 red {if condition='empty($data.gzh.force)'}none{/if}">确保所有管理员都已在个人信息里绑定微信，否则会扫码登录不了</p>
-                        </dd>
-                    </dl>
-                </div>
-                <div id="div_wechat" class="{if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}none{/if}">
-                    <dl class="row">
-                        <dt class="tit">
-                            <label for="wechat_appid"><em>*</em>AppID</label>
-                        </dt>
-                        <dd class="opt">
-                            <input type="text" class="input-txt" name="wechat[appid]" value="{$security['security_wechat_appid']|default=''}" autocomplete="off">
-                            &nbsp;<a href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=17633', '获取微信扫描登录的应用配置appid/appsecret');" style="font-size: 12px;padding-top: 10px;position: absolute;">查看教程</a>
-                            <p class="notic"></p>
-                        </dd>
-                    </dl>
-                    <dl class="row">
-                        <dt class="tit">
-                            <label for="wechat_secret"><em>*</em>AppSecret</label>
-                        </dt>
-                        <dd class="opt">
-                            <input type="text" class="input-txt" name="wechat[secret]" value="{$security['security_wechat_secret']|default=''}" autocomplete="off">
-                            <p class="notic"></p>
-                        </dd>
-                    </dl>
-                    <dl class="row">
-                        <dt class="tit">
-                            <label for="wechat_forcelogin">强制扫码登录</label>
-                        </dt>
-                        <dd class="opt">
-                            <div class="onoff">
-                                <label for="wechat_force1" class="cb-enable {if condition='!empty($security.security_wechat_forcelogin)'}selected{/if}">开启</label>
-                                <label for="wechat_force0" class="cb-disable {if condition='empty($security.security_wechat_forcelogin)'}selected{/if}">关闭</label>
-                                <input id="wechat_force1" name="wechat[force]" value="1" type="radio" onclick="forcelogin(this, 2);" {if condition="!empty($security.security_wechat_forcelogin)"} checked="checked"{/if}>
-                                <input id="wechat_force0" name="wechat[force]" value="0" type="radio" onclick="forcelogin(this, 2);" {if condition="empty($security.security_wechat_forcelogin)"} checked="checked"{/if}>
-                            </div>
-                            <p class="notic">开启后，后台只支持微信扫码登录</p>
-                            <p id="notic2_tips_2" class="notic2 red {if condition='empty($security.security_wechat_forcelogin)'}none{/if}">确保所有管理员都已在个人信息里绑定微信，否则会扫码登录不了</p>
-                            <span class="err"></span>
-                        </dd>
-                    </dl>
-                </div>
-                <!-- <dl class="row">
-                    <dt class="tit">
-                        <label>&nbsp;</label>
-                    </dt>
-                    <dd class="opt red">
-                        <p>如果没有绑定个人微信，请查看使用指南教程！</p>
-                    </dd>
-                </dl> -->
-            </div>
-            <div class="bot">
-                <a href="JavaScript:void(0);" onclick="checkForm();" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
-            </div>
-        </div>
-    </form>
-</div>
-<script type="text/javascript">
-
-    function wechat_is_open(obj)
-    {
-        var is_open = $(obj).val();
-        if (1 == is_open) {
-            $('#div_mode').show();
-        } else {
-            $('#div_mode').hide();
-        }
-    }
-
-    function scan_mode(obj)
-    {
-        var mode = $(obj).val();
-        if ('EyouGzhLogin' == mode) {
-            $('#div_gzhlogin').show();
-            $('#div_wechat').hide();
-            $('#jc_EyouGzhLogin').removeClass('none');
-            $('#jc_WechatLogin').addClass('none');
-        } else {
-            $('#div_gzhlogin').hide();
-            $('#div_wechat').show();
-            $('#jc_EyouGzhLogin').addClass('none');
-            $('#jc_WechatLogin').removeClass('none');
-            $("input[name^='wechat[appid]']").focus();
-        }
-    }
-
-    /**
-     * 开启强制微信登录
-     * @param  {[type]} obj [description]
-     * @return {[type]}     [description]
-     */
-    function forcelogin(obj, type)
-    {
-        var value = $(obj).val();
-        if (1 == value) {
-            $.ajax({
-                type : 'post',
-                url : "{:weapp_url('EyouGzhLogin/EyouGzhLogin/ajax_check_forcelogin')}",
-                data : {type:type, _ajax:1},
-                dataType : 'json',
-                success : function(res){
-                    if(res.code == 1){
-                        $('#notic2_tips_'+type).show();
-                        console.log(res.msg)
-                    }else{
-                        if (1 == type) {
-                            $('label[for=gzh_force1]').removeClass('selected');
-                            $('#gzh_force1').attr('checked','');
-                            $('label[for=gzh_force0]').addClass('selected');
-                            $('#gzh_force0').attr('checked','checked');
-                        }
-                        else if (2 == type) {
-                            $('label[for=wechat_force1]').removeClass('selected');
-                            $('#wechat_force1').attr('checked','');
-                            $('label[for=wechat_force0]').addClass('selected');
-                            $('#wechat_force0').attr('checked','checked');
-                        }
-                        layer.alert(res.msg, {icon: 5, title: false, closeBtn: false, btn:['关闭']});
-                    }
-                },
-                error: function(e){
-                    showErrorAlert(e.responseText);
-                }
-            });
-        } else {
-            $('#notic2_tips_'+type).hide();
-        }
-    }
-
-    // 判断输入框是否为空
-    function checkForm(){
-        var is_open = $('input[name=is_open]:checked').val();
-        if (1 == is_open) {
-            var mode = $('input[name=mode]:checked').val();
-            if ('WechatLogin' == mode) {
-                if($.trim($("input[name^='wechat[appid]']").val()) == ''){
-                    showErrorMsg('AppID不能为空！');
-                    $("input[name^='wechat[appid]']").focus();
-                    return false;
-                }
-                if($.trim($("input[name^='wechat[secret]']").val()) == ''){
-                    showErrorMsg('AppSecret不能为空！');
-                    $("input[name^='wechat[secret]']").focus();
-                    return false;
-                }
-            }
-        }
-        layer_loading('正在处理');
-        $.ajax({
-            type: 'POST',
-            url: '{:weapp_url("EyouGzhLogin/EyouGzhLogin/index")}',
-            data: $('#post_form').serialize(),
-            dataType: "JSON",
-            success: function(res){
-                layer.closeAll();
-                if (1 == res.code){
-                    layer.msg(res.msg, {shade: 0.3, time: 1000}, function(){
-                        window.location.reload();
-                    });
-                }else{
-                    showErrorAlert(res.msg);
-                }
-            },
-            error: function(e){
-                layer.closeAll();
-                showErrorAlert(e.responseText);
-            }
-        });
-    }
-</script>
+{include file="header.htm" /}
+<body class="bodystyle" style="overflow-y: scroll; cursor: default; -moz-user-select: inherit;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    {include file="bar.htm" /}
+    <form class="form-horizontal" id="post_form" action="{:weapp_url('EyouGzhLogin/EyouGzhLogin/index')}" method="post">
+        <div class="ncap-form-default">
+            <dl class="row">
+                <dt class="tit">
+                    <label>扫码功能</label>
+                </dt>
+                <dd class="opt">
+                    <div class="onoff">
+                        <label for="is_open1" class="cb-enable {if condition='!empty($data.is_open)'}selected{/if}">开启</label>
+                        <label for="is_open0" class="cb-disable {if condition='empty($data.is_open)'}selected{/if}">关闭</label>
+                        <input id="is_open1" name="is_open" value="1" type="radio" onclick="wechat_is_open(this);" {if condition="!empty($data.is_open) "} checked="checked" {/if}>
+                        <input id="is_open0" name="is_open" value="0" type="radio" onclick="wechat_is_open(this);" {if condition="empty($data.is_open) "} checked="checked" {/if}>
+                    </div>
+                    <p class="notic">开启后，后台登录界面将支持普通登录/扫码登录</p>
+                </dd>
+            </dl>
+            <div id="div_mode" class="{if condition='empty($data.is_open)'}none{/if}">
+                <dl class="row">
+                    <dt class="tit">
+                        <label>扫码模式</label>
+                    </dt>
+                    <dd class="opt">
+                        <label class="curpoin"><input type="radio" name="mode" value="WechatLogin" onclick="scan_mode(this);" {if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}checked="checked"{/if}>微信应用&nbsp;<font color="red" class="{notempty name='$data.install_time'} none {/notempty}">(推荐)</font></label>
+                        &nbsp;
+                        <label class="curpoin {notempty name='$data.install_time'} none {/notempty}"><input type="radio" name="mode" value="EyouGzhLogin" onclick="scan_mode(this);" {if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}checked="checked"{/if}>官方公众号&nbsp;(有不稳定因素)</label>
+                        &nbsp;
+                        <p class="notic">每个模式有各自的说明文档</p>
+                        &nbsp;
+                        <a id="jc_WechatLogin" class="{if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}none{/if}" href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=28268', '微信应用的说明书');" style="font-size: 12px;position: absolute;">查看说明</a>
+                        <a id="jc_EyouGzhLogin" class="{if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}none{/if}" href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=28267', '官方公众号的说明书');" style="font-size: 12px;position: absolute;">查看说明</a>
+                    </dd>
+                </dl>
+                <div id="div_gzhlogin" class="{if condition="!isset($data.mode) || $data.mode == 'WechatLogin'"}none{/if}">
+                    <dl class="row">
+                        <dt class="tit">
+                            <label>强制扫码登录</label>
+                        </dt>
+                        <dd class="opt">
+                            <div class="onoff">
+                                <label for="gzh_force1" class="cb-enable {if condition='!empty($data.gzh.force)'}selected{/if}">开启</label>
+                                <label for="gzh_force0" class="cb-disable {if condition='empty($data.gzh.force)'}selected{/if}">关闭</label>
+                                <input id="gzh_force1" name="gzh[force]" value="1" type="radio" onclick="forcelogin(this, 1);" {if condition="!empty($data.gzh.force)"} checked="checked" {/if}>
+                                <input id="gzh_force0" name="gzh[force]" value="0" type="radio" onclick="forcelogin(this, 1);" {if condition="empty($data.gzh.force)"} checked="checked" {/if}>
+                            </div>
+                            <p class="notic">开启后，后台只支持微信扫码登录</p>
+                            <p id="notic2_tips_1" class="notic2 red {if condition='empty($data.gzh.force)'}none{/if}">确保所有管理员都已在个人信息里绑定微信，否则会扫码登录不了</p>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="div_wechat" class="{if condition="isset($data.mode) && $data.mode == 'EyouGzhLogin'"}none{/if}">
+                    <dl class="row">
+                        <dt class="tit">
+                            <label for="wechat_appid"><em>*</em>AppID</label>
+                        </dt>
+                        <dd class="opt">
+                            <input type="text" class="input-txt" name="wechat[appid]" value="{$security['security_wechat_appid']|default=''}" autocomplete="off">
+                            &nbsp;<a href="javascript:void(0);" onclick="click_to_eyou_1575506523('https://www.eyoucms.com/plus/view.php?aid=17633', '获取微信扫描登录的应用配置appid/appsecret');" style="font-size: 12px;padding-top: 10px;position: absolute;">查看教程</a>
+                            <p class="notic"></p>
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="tit">
+                            <label for="wechat_secret"><em>*</em>AppSecret</label>
+                        </dt>
+                        <dd class="opt">
+                            <input type="text" class="input-txt" name="wechat[secret]" value="{$security['security_wechat_secret']|default=''}" autocomplete="off">
+                            <p class="notic"></p>
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="tit">
+                            <label for="wechat_forcelogin">强制扫码登录</label>
+                        </dt>
+                        <dd class="opt">
+                            <div class="onoff">
+                                <label for="wechat_force1" class="cb-enable {if condition='!empty($security.security_wechat_forcelogin)'}selected{/if}">开启</label>
+                                <label for="wechat_force0" class="cb-disable {if condition='empty($security.security_wechat_forcelogin)'}selected{/if}">关闭</label>
+                                <input id="wechat_force1" name="wechat[force]" value="1" type="radio" onclick="forcelogin(this, 2);" {if condition="!empty($security.security_wechat_forcelogin)"} checked="checked"{/if}>
+                                <input id="wechat_force0" name="wechat[force]" value="0" type="radio" onclick="forcelogin(this, 2);" {if condition="empty($security.security_wechat_forcelogin)"} checked="checked"{/if}>
+                            </div>
+                            <p class="notic">开启后，后台只支持微信扫码登录</p>
+                            <p id="notic2_tips_2" class="notic2 red {if condition='empty($security.security_wechat_forcelogin)'}none{/if}">确保所有管理员都已在个人信息里绑定微信，否则会扫码登录不了</p>
+                            <span class="err"></span>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- <dl class="row">
+                    <dt class="tit">
+                        <label>&nbsp;</label>
+                    </dt>
+                    <dd class="opt red">
+                        <p>如果没有绑定个人微信，请查看使用指南教程！</p>
+                    </dd>
+                </dl> -->
+            </div>
+            <div class="bot">
+                <a href="JavaScript:void(0);" onclick="checkForm();" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+    function wechat_is_open(obj)
+    {
+        var is_open = $(obj).val();
+        if (1 == is_open) {
+            $('#div_mode').show();
+        } else {
+            $('#div_mode').hide();
+        }
+    }
+
+    function scan_mode(obj)
+    {
+        var mode = $(obj).val();
+        if ('EyouGzhLogin' == mode) {
+            $('#div_gzhlogin').show();
+            $('#div_wechat').hide();
+            $('#jc_EyouGzhLogin').removeClass('none');
+            $('#jc_WechatLogin').addClass('none');
+        } else {
+            $('#div_gzhlogin').hide();
+            $('#div_wechat').show();
+            $('#jc_EyouGzhLogin').addClass('none');
+            $('#jc_WechatLogin').removeClass('none');
+            $("input[name^='wechat[appid]']").focus();
+        }
+    }
+
+    /**
+     * 开启强制微信登录
+     * @param  {[type]} obj [description]
+     * @return {[type]}     [description]
+     */
+    function forcelogin(obj, type)
+    {
+        var value = $(obj).val();
+        if (1 == value) {
+            $.ajax({
+                type : 'post',
+                url : "{:weapp_url('EyouGzhLogin/EyouGzhLogin/ajax_check_forcelogin')}",
+                data : {type:type, _ajax:1},
+                dataType : 'json',
+                success : function(res){
+                    if(res.code == 1){
+                        $('#notic2_tips_'+type).show();
+                        console.log(res.msg)
+                    }else{
+                        if (1 == type) {
+                            $('label[for=gzh_force1]').removeClass('selected');
+                            $('#gzh_force1').attr('checked','');
+                            $('label[for=gzh_force0]').addClass('selected');
+                            $('#gzh_force0').attr('checked','checked');
+                        }
+                        else if (2 == type) {
+                            $('label[for=wechat_force1]').removeClass('selected');
+                            $('#wechat_force1').attr('checked','');
+                            $('label[for=wechat_force0]').addClass('selected');
+                            $('#wechat_force0').attr('checked','checked');
+                        }
+                        layer.alert(res.msg, {icon: 5, title: false, closeBtn: false, btn:['关闭']});
+                    }
+                },
+                error: function(e){
+                    showErrorAlert(e.responseText);
+                }
+            });
+        } else {
+            $('#notic2_tips_'+type).hide();
+        }
+    }
+
+    // 判断输入框是否为空
+    function checkForm(){
+        var is_open = $('input[name=is_open]:checked').val();
+        if (1 == is_open) {
+            var mode = $('input[name=mode]:checked').val();
+            if ('WechatLogin' == mode) {
+                if($.trim($("input[name^='wechat[appid]']").val()) == ''){
+                    showErrorMsg('AppID不能为空！');
+                    $("input[name^='wechat[appid]']").focus();
+                    return false;
+                }
+                if($.trim($("input[name^='wechat[secret]']").val()) == ''){
+                    showErrorMsg('AppSecret不能为空！');
+                    $("input[name^='wechat[secret]']").focus();
+                    return false;
+                }
+            }
+        }
+        layer_loading('正在处理');
+        $.ajax({
+            type: 'POST',
+            url: '{:weapp_url("EyouGzhLogin/EyouGzhLogin/index")}',
+            data: $('#post_form').serialize(),
+            dataType: "JSON",
+            success: function(res){
+                layer.closeAll();
+                if (1 == res.code){
+                    layer.msg(res.msg, {shade: 0.3, time: 1000}, function(){
+                        window.location.reload();
+                    });
+                }else{
+                    showErrorAlert(res.msg);
+                }
+            },
+            error: function(e){
+                layer.closeAll();
+                showErrorAlert(e.responseText);
+            }
+        });
+    }
+</script>
 {include file="footer.htm" /}

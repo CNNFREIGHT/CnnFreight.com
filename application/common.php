@@ -1069,18 +1069,21 @@ if (!function_exists('handle_subdir_pic'))
                         ->getAllWithIndex('code');
                     }
                     foreach ($imgArr as $key => $value) {
-                        preg_match_all("#src=('|\")(.*)('|\")#isU", $value, $img_val);
+                        $value = htmlspecialchars_decode($value);
+                        preg_match_all("#src=('|\"|&quot;)(.*)('|\"|&quot;)#isU", $value, $img_val);
                         if (isset($img_val[2][0]) && !is_http_url($img_val[2][0])) { // 是否本地图片
                             $handle_img = preg_replace('#(/[/\w\-]+)?(/public/upload/|/public/static/|/uploads/|/weapp/)#i', $add_root_dir.'$2', $value);
                             $str = str_ireplace($value, $handle_img, $str);
-                        } else if (isset($img_val[2][0]) && is_http_url($img_val[2][0])) {
+                        }
+                        else if (isset($img_val[2][0]) && is_http_url($img_val[2][0])) {
                             $StrData = parse_url($img_val[2][0]);
                             if (!empty($weappList['Qiniuyun']) && 1 == $weappList['Qiniuyun']['status']) {
                                 $qnyData = json_decode($weappList['Qiniuyun']['data'], true);
-                                $weappConfig = json_decode($weappList['Qiniuyun']['config'], true);
-                                if ($qnyData['domain'] != $StrData['host']) {
+                                if (trim($qnyData['domain']) != trim($StrData['host']) && in_array($StrData['host'], $qnyData['old_domain_list'])) {
                                     // 若切换了存储空间或访问域名，与数据库中存储的图片路径域名不一致时，访问本地路径，保证图片正常
-                                    $str = preg_replace('/(http(s)?\:)?\/\/' . $StrData['host'] . '/', '', $str);
+                                    $str = str_ireplace('https://' . $StrData['host'], '', $str);
+                                    $str = str_ireplace('http://' . $StrData['host'], '', $str);
+                                    $str = str_ireplace('//' . $StrData['host'], '', $str);
                                 }
                             }
                         }

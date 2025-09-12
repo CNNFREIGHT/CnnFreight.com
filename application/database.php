@@ -21,7 +21,7 @@ return array(
     // 用户名
     'username'        => 'cnnfreight_com',
     // 密码
-    'password'        => 'iESzJS5MDsCGCfx2',
+    'password'        => 'Y7C6GXJYyrdFFp3L',
     // 端口
     'hostport'        => '3306',
     // 连接dsn

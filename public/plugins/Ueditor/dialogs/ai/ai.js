@@ -1,8 +1,8 @@
 var aiConfig = editor.getOpt('ai');
 
 var aiFunctions = editor.getOpt('aiFunctions');
-
-var ai_driver = '';
+
+var ai_driver = '';
 
 var isMultiLine = function (text) {
     return text.indexOf('\n') !== -1;
@@ -11,7 +11,7 @@ var isMultiLine = function (text) {
 var fetchStream = function (url, option, onStream, onFinish) {
     fetch(url, Object.assign({
         method: 'POST',
-    }, option)).then(response => {
+    }, option)).then(response => {
         if (!response.ok) {
             onFinish({code: -1, msg: `HTTP error! status: ${response.status}，请检查插件[Ai智能创作平台]的${ai_driver}的AI配置`})
             return
@@ -130,7 +130,7 @@ var fetchStream = function (url, option, onStream, onFinish) {
 }
 
 var openAiCompletion = function (redata, param, option) {
-    var ai_config = redata.ai_config;
+    var ai_config = redata.ai_config;
     ai_driver = ai_config.driver;
     option = Object.assign({
         body: null

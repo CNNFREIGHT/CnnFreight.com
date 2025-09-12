@@ -22643,7 +22643,7 @@ UE.plugins['shortcutmenu'] = function () {
 
         setTimeout (function () {
             var rng = me.selection.getRange ();
-            if (true || rng.collapsed === false || type == "contextmenu") {
+            if (rng.collapsed === false || type == "contextmenu") {
 
                 if (!menu) {
                     menu = new baidu.editor.ui.ShortCutMenu ({
@@ -28187,9 +28187,8 @@ UE.ui = baidu.editor.ui = {};
     var imageTypeSet = [
         'none', 'left', 'center', 'right'
     ];
-    for (var i = 0; i < imageTypeSet.length; i++) {
+    for (let value of imageTypeSet) {
         (function (value) {
-            value = imageTypeSet[i];
             editorui['image' + value] = function (editor) {
                 var ui = new editorui.Button({
                     className: "edui-for-" + 'image' + value,

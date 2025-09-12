@@ -483,6 +483,8 @@
             var parameter = $(obj).attr('data-parameter')
             if ('balance' == mark){
                 $('#confirm').attr("onclick","PayBalancePayment("+parameter+");");
+            } else if ('score' == mark) {
+                $('#confirm').attr("onclick","payScorePayment("+parameter+");");
             }else{
                 $('#confirm').attr("onclick","SelectPayMethodLayer("+parameter+");");
             }

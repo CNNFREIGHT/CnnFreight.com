@@ -124,7 +124,14 @@ class Base extends Controller {
 
                 // 解决没有从文档列表点击编辑的情况
                 $ENV_GOBACK_URL = cookie('ENV_GOBACK_URL');
-                empty($ENV_GOBACK_URL) && cookie('ENV_GOBACK_URL'.INSTALL_DATE, url($controller_name.'/index'));
+                if (empty($ENV_GOBACK_URL)) {
+                    $url_data = [];
+                    $channel = input('param.channel/d');
+                    if ('Custom' == $controller_name && !empty($channel)) {
+                        $url_data = ['channel'=>$channel];
+                    }
+                    cookie('ENV_GOBACK_URL'.INSTALL_DATE, url($controller_name.'/index', $url_data));
+                } 
                 $ENV_LIST_URL = cookie('ENV_LIST_URL');
                 empty($ENV_LIST_URL) && cookie('ENV_LIST_URL'.INSTALL_DATE, url($controller_name.'/index'));
             } else if (in_array($this->request->action(), ['index'])) {
