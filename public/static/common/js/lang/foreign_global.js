@@ -1,11 +1,11 @@
-/**
- * 外贸助手的JS文件的多语言包
- */
-function ey_foreign(string, ...args) {
-    return string.replace(/%([a-zA-Z0-9]{1,1})/g, function() {
-        return args.shift();
-    });
-}
+/**
+ * 外贸助手的JS文件的多语言包
+ */
+function ey_foreign(string, ...args) {
+    return string.replace(/%([a-zA-Z0-9]{1,1})/g, function() {
+        return args.shift();
+    });
+}
 var ey_foreign_page1 = "Home";
 var ey_foreign_page2 = "Pre";
 var ey_foreign_page3 = "Next";
