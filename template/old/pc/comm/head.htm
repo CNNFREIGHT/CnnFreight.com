@@ -1,135 +1,253 @@
-<!doctype html>
-<html lang="zh">
-<head>
-	<meta charset="utf-8">
-	<title>{$eyou.field.seo_title}_{eyou:global name='web_title' /}</title>
-	<meta name="keywords" content="{$eyou.field.seo_keywords}_{eyou:global name='web_keywords' /}" />
-	<meta name="description" content="{$eyou.field.seo_description}_{eyou:global name='web_description' /}" />
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
-	
-	{eyou:static file="/template/old/css/common.css" /}
-	{eyou:static file="/template/old/css/jquery.bxslider.css" /}
-	{eyou:static file="/template/old/css/homeadd.css" /}
-	{eyou:static file="/template/old/css/animate.css" /}
-
-	<meta name="baidu-site-verification" content="SVpHNM9fEu" />
-	<link rel="shortcut icon" href="{eyou:global name='web_ico' /}" type="image/x-icon">
-</head>
-<body>
-
-<!-- 头部导航 -->
-
-<div class="header clearboth">
-	{eyou:if condition="$Think.cookie.home_lang =='cn'"}
-	<div id="nav">
-		<div class="logo"> <img style="width: 100%;" src="{eyou:global name='web_logo' /}"></div>
-		<ul class="clearboth">
-			
-			<li {eyou:eq name='$Request.param.m' value='Index'}class="cur"{/eyou:eq} style="width:80px" rel="0"> <a href="{eyou:global name='web_cmsurl' /}">首页<i></i></a></li>
-
-			{eyou:models type="top" id="field" currentstyle="cur"}
-			<li rel=""  class="ot {$field.currentstyle}">
-				<a href="{$field.typeurl}">{$field.typename}<i></i></a>
-				{eyou:notempty name="$field.children"}
-				<div>
-					<!-- 第二级栏目循环开始 -->
-					{eyou:models name="$field.children" id="field2"}
-					<a href="{$field2.typeurl}">· {$field2.typename}</a>
-					{/eyou:models} 
-				</div>
-				{/eyou:notempty}
-			</li>
-			{/eyou:models}
-		</ul>
-    <div class="language"><a class="langbtn" href="{$field.url}/en"><img src="/template/old/images/en.png"></a></div>
-		<div class="nav_line"></div>
-	</div>
-	{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-	<div id="nav">
-		<div class="logo"> <img style="width: 100%;" src="{eyou:global name='web_logo' /}"></div>
-		<ul class="clearboth">
-			
-			<li {eyou:eq name='$Request.param.m' value='Index'}class="cur"{/eyou:eq} style="width:80px" rel="0"> <a href="{eyou:global name='web_cmsurl' /}">HOME<i></i></a></li>
-
-			{eyou:models type="top" id="field" currentstyle="cur"}
-			<li rel=""  class="ot {$field.currentstyle}">
-				<a href="{$field.typeurl}">{$field.englist_name}<i></i></a>
-				{eyou:notempty name="$field.children"}
-				<div>
-					<!-- 第二级栏目循环开始 -->
-					{eyou:models name="$field.children" id="field2"}
-					<a href="{$field2.typeurl}">· {$field2.englist_name}</a>
-					{/eyou:models} 
-				</div>
-				{/eyou:notempty}
-			</li>
-			{/eyou:models}
-		</ul>
-    <div class="language"><a class="langbtn" href="/"><img src="/template/old/images/cn.png"></a></div>
-		<div class="nav_line"></div>
-	</div>
-	{/eyou:if}
-
-   <!-- wap -->
-	<div class="ham">
-		<img src="/template/old/images/ham.png">
-		{eyou:if condition="$Think.cookie.home_lang =='cn'"}
-		<div class="hamBox" id="hamBox">
-			<div>
-				<a href="{eyou:global name='web_cmsurl' /}" class="logo"><img src="/template/old/images/logo1.png"></a>
-				<img class="closeBtn" src="/template/old/images/close.png">
-			</div>
-			<ul class="clearboth">
-				<li>
-					<a href="{eyou:global name='web_cmsurl' /}">首页</a>
-				</li>
-				{eyou:models type="top" id="field" currentstyle="cur"}
-				<li rel=""  class="ot {$field.currentstyle}">
-				<a href="javascript:void(0);">{$field.typename}<i></i></a>
-				{eyou:notempty name="$field.children"}
-				<div>
-					<!-- 第二级栏目循环开始 -->
-					{eyou:models name="$field.children" id="field2"}
-					<a href="{$field2.typeurl}">· {$field2.typename}</a>
-					{/eyou:models} 
-				</div>
-				{/eyou:notempty}
-			</li>
-			{/eyou:models}
-			</ul>
-			<div class="language"><a href="{$field.url}/en">English</a></div>
-		</div>
-		{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-		<div class="hamBox" id="hamBox">
-			<div>
-				<a href="{eyou:global name='web_cmsurl' /}" class="logo"><img src="/template/old/images/logo1.png"></a>
-				<img class="closeBtn" src="/template/old/images/close.png">
-			</div>
-			<ul class="clearboth">
-				<li>
-					<a href="{eyou:global name='web_cmsurl' /}">HOME</a>
-				</li>
-				{eyou:models type="top" id="field" currentstyle="cur"}
-				<li rel=""  class="ot {$field.currentstyle}">
-				<a href="javascript:void(0);">{$field.englist_name}<i></i></a>
-				{eyou:notempty name="$field.children"}
-				<div>
-					<!-- 第二级栏目循环开始 -->
-					{eyou:models name="$field.children" id="field2"}
-					<a href="{$field2.typeurl}">· {$field2.englist_name}</a>
-					{/eyou:models} 
-				</div>
-				{/eyou:notempty}
-			</li>
-			{/eyou:models}
-			</ul>
-			<div class="language"><a href="/">中文</a></div>
-		</div>
-		{/eyou:if}
-	</div>
-
-</div>
-
-<!--占位导航栏-->
-<div class="head-sm-height"></div>
-
+<!doctype html>
+<html lang="zh">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>{$eyou.field.seo_title}_{eyou:global name='web_title'/}</title>
+    <meta name="keywords" content="{$eyou.field.seo_keywords}_{eyou:global name='web_title' /}"/>
+    <meta name="description" content="{$eyou.field.seo_description}_{eyou:global name='web_title' /}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+    {eyou:static file="/template/old/css/common.css"/}
+		{eyou:static file="/template/old/css/jquery.bxslider.css"/}
+		{eyou:static file="/template/old/css/homeadd.css"/}
+		{eyou:static file="/template/old/css/animate.css"/}
+    <meta name="baidu-site-verification" content="SVpHNM9fEu" />
+    <link rel="shortcut icon" href="{eyou:global name='web_ico' /}" type="image/x-icon">
+  </head>
+  
+  <body>
+
+
+
+<!-- 头部导航 -->
+
+
+
+<div class="header clearboth">
+
+	{eyou:if condition="$Think.cookie.home_lang =='cn'"}
+
+	<div id="nav">
+
+		<div class="logo"> <img style="width: 100%;" src="{eyou:global name='web_logo' /}"></div>
+
+		<ul class="clearboth">
+
+			
+
+			<li {eyou:eq name='$Request.param.m' value='Index'}class="cur"{/eyou:eq} style="width:80px" rel="0"> <a href="{eyou:global name='web_cmsurl' /}">首页<i></i></a></li>
+
+
+
+			{eyou:models type="top" id="field" currentstyle="cur"}
+
+			<li rel=""  class="ot {$field.currentstyle}">
+
+				<a href="{$field.typeurl}">{$field.typename}<i></i></a>
+
+				{eyou:notempty name="$field.children"}
+
+				<div>
+
+					<!-- 第二级栏目循环开始 -->
+
+					{eyou:models name="$field.children" id="field2"}
+
+					<a href="{$field2.typeurl}">· {$field2.typename}</a>
+
+					{/eyou:models} 
+
+				</div>
+
+				{/eyou:notempty}
+
+			</li>
+
+			{/eyou:models}
+
+		</ul>
+
+    <div class="language"><a class="langbtn" href="{$field.url}/en"><img src="/template/old/images/en.png"></a></div>
+
+		<div class="nav_line"></div>
+
+	</div>
+
+	{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+
+	<div id="nav">
+
+		<div class="logo"> <img style="width: 100%;" src="{eyou:global name='web_logo' /}"></div>
+
+		<ul class="clearboth">
+
+			
+
+			<li {eyou:eq name='$Request.param.m' value='Index'}class="cur"{/eyou:eq} style="width:80px" rel="0"> <a href="{eyou:global name='web_cmsurl' /}">HOME<i></i></a></li>
+
+
+
+			{eyou:models type="top" id="field" currentstyle="cur"}
+
+			<li rel=""  class="ot {$field.currentstyle}">
+
+				<a href="{$field.typeurl}">{$field.englist_name}<i></i></a>
+
+				{eyou:notempty name="$field.children"}
+
+				<div>
+
+					<!-- 第二级栏目循环开始 -->
+
+					{eyou:models name="$field.children" id="field2"}
+
+					<a href="{$field2.typeurl}">· {$field2.englist_name}</a>
+
+					{/eyou:models} 
+
+				</div>
+
+				{/eyou:notempty}
+
+			</li>
+
+			{/eyou:models}
+
+		</ul>
+
+    <div class="language"><a class="langbtn" href="/"><img src="/template/old/images/cn.png"></a></div>
+
+		<div class="nav_line"></div>
+
+	</div>
+
+	{/eyou:if}
+
+
+
+   <!-- wap -->
+
+	<div class="ham">
+
+		<img src="/template/old/images/ham.png">
+
+		{eyou:if condition="$Think.cookie.home_lang =='cn'"}
+
+		<div class="hamBox" id="hamBox">
+
+			<div>
+
+				<a href="{eyou:global name='web_cmsurl' /}" class="logo"><img src="/template/old/images/logo1.png"></a>
+
+				<img class="closeBtn" src="/template/old/images/close.png">
+
+			</div>
+
+			<ul class="clearboth">
+
+				<li>
+
+					<a href="{eyou:global name='web_cmsurl' /}">首页</a>
+
+				</li>
+
+				{eyou:models type="top" id="field" currentstyle="cur"}
+
+				<li rel=""  class="ot {$field.currentstyle}">
+
+				<a href="javascript:void(0);">{$field.typename}<i></i></a>
+
+				{eyou:notempty name="$field.children"}
+
+				<div>
+
+					<!-- 第二级栏目循环开始 -->
+
+					{eyou:models name="$field.children" id="field2"}
+
+					<a href="{$field2.typeurl}">· {$field2.typename}</a>
+
+					{/eyou:models} 
+
+				</div>
+
+				{/eyou:notempty}
+
+			</li>
+
+			{/eyou:models}
+
+			</ul>
+
+			<div class="language"><a href="{$field.url}/en">English</a></div>
+
+		</div>
+
+		{eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+
+		<div class="hamBox" id="hamBox">
+
+			<div>
+
+				<a href="{eyou:global name='web_cmsurl' /}" class="logo"><img src="/template/old/images/logo1.png"></a>
+
+				<img class="closeBtn" src="/template/old/images/close.png">
+
+			</div>
+
+			<ul class="clearboth">
+
+				<li>
+
+					<a href="{eyou:global name='web_cmsurl' /}">HOME</a>
+
+				</li>
+
+				{eyou:models type="top" id="field" currentstyle="cur"}
+
+				<li rel=""  class="ot {$field.currentstyle}">
+
+				<a href="javascript:void(0);">{$field.englist_name}<i></i></a>
+
+				{eyou:notempty name="$field.children"}
+
+				<div>
+
+					<!-- 第二级栏目循环开始 -->
+
+					{eyou:models name="$field.children" id="field2"}
+
+					<a href="{$field2.typeurl}">· {$field2.englist_name}</a>
+
+					{/eyou:models} 
+
+				</div>
+
+				{/eyou:notempty}
+
+			</li>
+
+			{/eyou:models}
+
+			</ul>
+
+			<div class="language"><a href="/">中文</a></div>
+
+		</div>
+
+		{/eyou:if}
+
+	</div>
+
+
+
+</div>
+
+
+
+<!--占位导航栏-->
+
+<div class="head-sm-height"></div>
+
+
+
