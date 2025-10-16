@@ -1,38 +1,93 @@
-{eyou:include file="comm/head.htm" /}
-{eyou:include file="comm/top.htm" /}
-
-	<div class="all">
-		<div class="news_cont clearboth">
-			<div class="Left">
-				{pboot:nav parent={sort:tcode}}
-				<a href="[nav:link]" {pboot:if('[nav:scode]'=='{sort:scode}' )}class="cur" {/pboot:if}>[nav:name] <img
-						src="{pboot:sitetplpath}/images/old/leftbg2.png" /></a>
-				{/pboot:nav}
-			</div>
-	
-			<div class="right_cont">
-				<div class="news clearboth">
-					<h1>{content:title}</h1>
-					<div class="subBox clearboth">
-						<span class="time">{content:date}</span>
-						<div class="bdsharebuttonbox newsRight"></div>
-					</div>
-					<p>{content:content}</p>
-	
-					<div class="bdsharebuttonbox"></div>
-				</div>
-				<div class="page_box">
-					<a class=font_hei href="{content:prelink}">{content:pretitle}</a>
-					<a href="{content:nextlink}" class="back">{content:nexttitle notext='no more'}</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	{eyou:include file="comm/foot.htm" /}
-
-</body>
-
+<!doctype html>
+<html lang="zh">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>{$eyou.field.seo_title}_{eyou:global name='web_title'/}</title>
+    <meta name="keywords" content="{$eyou.field.seo_keywords}_{eyou:global name='web_title' /}"/>
+    <meta name="description" content="{$eyou.field.seo_description}_{eyou:global name='web_title' /}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+    {eyou:static file="/template/old/css/common.css"/}
+		{eyou:static file="/template/old/css/jquery.bxslider.css"/}
+		{eyou:static file="/template/old/css/homeadd.css"/}
+		{eyou:static file="/template/old/css/animate.css"/}
+    <meta name="baidu-site-verification" content="SVpHNM9fEu" />
+    <link rel="shortcut icon" href="{eyou:global name='web_ico' /}" type="image/x-icon">
+  </head>
+  
+  <body>
+{eyou:include file="comm/head.htm" /}
+
+{eyou:include file="comm/top.htm" /}
+
+
+
+	<div class="all">
+
+		<div class="news_cont clearboth">
+
+			<div class="Left">
+
+				{pboot:nav parent={sort:tcode}}
+
+				<a href="[nav:link]" {pboot:if('[nav:scode]'=='{sort:scode}' )}class="cur" {/pboot:if}>[nav:name] <img
+
+						src="{pboot:sitetplpath}/images/old/leftbg2.png" /></a>
+
+				{/pboot:nav}
+
+			</div>
+
+	
+
+			<div class="right_cont">
+
+				<div class="news clearboth">
+
+					<h1>{content:title}</h1>
+
+					<div class="subBox clearboth">
+
+						<span class="time">{content:date}</span>
+
+						<div class="bdsharebuttonbox newsRight"></div>
+
+					</div>
+
+					<p>{content:content}</p>
+
+	
+
+					<div class="bdsharebuttonbox"></div>
+
+				</div>
+
+				<div class="page_box">
+
+					<a class=font_hei href="{content:prelink}">{content:pretitle}</a>
+
+					<a href="{content:nextlink}" class="back">{content:nexttitle notext='no more'}</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	{eyou:include file="comm/foot.htm" /}
+
+
+
+</body>
+
+
+
 </html>

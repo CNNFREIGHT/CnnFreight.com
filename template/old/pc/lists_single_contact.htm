@@ -1,24 +1,65 @@
-{eyou:include file="comm/head.htm" /}
-{eyou:include file="comm/top.htm" /}
-
-<div class="all">
-    <div class="about_cont clearboth">
-        <div class="Left">
-        {eyou:include file="comm/sortnav.htm" /}
-        </div>
-        <div class="right_cont">
-            {eyou:include file="comm/position.htm" /}
-            <div class="contact">
-                <div class="company_cont">
-                    {$eyou.field.content}
-                </div>
-                  {eyou:if condition="$Think.cookie.home_lang =='cn'"}
-                  {eyou:include file="comm/map.htm" /}
-                  {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
-                  <iframe src="https://www.google.com/maps/d/embed?mid=1GAzLPMMNvruXlswWNBxlLxwTpSBKar4&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
-                  {/eyou:if}
-                </div>
-            </div>
-        </div>
-    </div>
+<!doctype html>
+<html lang="zh">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>{$eyou.field.seo_title}_{eyou:global name='web_title'/}</title>
+    <meta name="keywords" content="{$eyou.field.seo_keywords}_{eyou:global name='web_title' /}"/>
+    <meta name="description" content="{$eyou.field.seo_description}_{eyou:global name='web_title' /}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+    {eyou:static file="/template/old/css/common.css"/}
+		{eyou:static file="/template/old/css/jquery.bxslider.css"/}
+		{eyou:static file="/template/old/css/homeadd.css"/}
+		{eyou:static file="/template/old/css/animate.css"/}
+    <meta name="baidu-site-verification" content="SVpHNM9fEu" />
+    <link rel="shortcut icon" href="{eyou:global name='web_ico' /}" type="image/x-icon">
+  </head>
+  
+  <body>
+{eyou:include file="comm/head.htm" /}
+
+{eyou:include file="comm/top.htm" /}
+
+
+
+<div class="all">
+
+    <div class="about_cont clearboth">
+
+        <div class="Left">
+
+        {eyou:include file="comm/sortnav.htm" /}
+
+        </div>
+
+        <div class="right_cont">
+
+            {eyou:include file="comm/position.htm" /}
+
+            <div class="contact">
+
+                <div class="company_cont">
+
+                    {$eyou.field.content}
+
+                </div>
+
+                  {eyou:if condition="$Think.cookie.home_lang =='cn'"}
+
+                  {eyou:include file="comm/map.htm" /}
+
+                  {eyou:elseif condition="$Think.cookie.home_lang =='en'"}
+
+                  <iframe src="https://www.google.com/maps/d/embed?mid=1GAzLPMMNvruXlswWNBxlLxwTpSBKar4&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
+
+                  {/eyou:if}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 {eyou:include file="comm/foot.htm" /}
